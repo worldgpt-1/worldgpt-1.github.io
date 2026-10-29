@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0b0f14">
+<title>WorldGPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0f14;--bg-2:#0f141b;--surface:#131a24;--line:#233041;--line-2:#2f3f54;--text:#eceff3;--text-2:#c3cad4;--muted:#8e99a7;--accent:#52c4ff;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);background-image:radial-gradient(1200px 600px at 50% -220px,#16263a 0%,rgba(22,38,58,0) 70%);color:var(--text);font:400 17px/1.65 "IBM Plex Sans","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:Barlow,"Helvetica Neue",Arial,sans-serif;letter-spacing:-.01em}
+h2{font-size:clamp(1.7rem,3.2vw,2.3rem);font-weight:600;margin:8px 0 16px}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+.wide{max-width:1120px}
+section{margin:72px auto}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+.hero{text-align:center;padding:76px 0 8px}
+.hero h1{font-size:clamp(3rem,8.5vw,6.2rem);font-weight:700;line-height:.95;letter-spacing:-.02em;margin:18px auto 0}
+.hero h1 .brand{color:var(--accent)}
+.sub{font-family:Barlow,Arial,sans-serif;font-weight:500;font-size:clamp(1.25rem,2.6vw,1.9rem);line-height:1.25;color:var(--text-2);margin:16px auto 0;max-width:820px}
+.authors{color:var(--muted);margin:22px 0 0}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);color:var(--text);font-family:Barlow,Arial,sans-serif;font-weight:600;font-size:1rem;text-decoration:none}
+.btn.disabled{color:var(--muted);border-color:var(--line);background:transparent;cursor:default}
+.frame{border-radius:14px;background:#000;border:1px solid var(--line-2);box-shadow:0 30px 80px rgba(0,0,0,.55);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:"IBM Plex Mono",monospace}
+.placeholder{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:28px 16px;text-align:center;color:var(--muted)}
+.rule{height:1px;background:linear-gradient(90deg,rgba(82,196,255,0),var(--line-2),rgba(82,196,255,0));margin:72px auto;max-width:1120px}
+footer{color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:.78rem;text-align:center;padding-bottom:48px}
+footer p{border-top:1px solid var(--line);padding-top:22px}
+</style>
+</head>
+<body>
+<header class="hero wrap wide">
+<p class="eyebrow">Project page</p>
+<h1>World<span class="brand">GPT</span></h1>
+<p class="sub">Subtitle coming soon</p>
+<p class="authors">Authors coming soon</p>
+<nav class="links" aria-label="Paper links">
+<a class="btn disabled">Paper</a>
+<a class="btn disabled">arXiv</a>
+<a class="btn disabled">Code</a>
+<a class="btn" href="#bibtex">BibTeX</a>
+</nav>
+</header>
+<main>
+<section class="wrap wide" id="demo">
+<div class="frame">Demo video coming soon</div>
+</section>
+<div class="rule"></div>
+<section class="wrap" id="abstract">
+<p class="eyebrow">Abstract</p>
+<h2>Overview</h2>
+<div class="placeholder">Coming soon</div>
+</section>
+<section class="wrap wide" id="method">
+<p class="eyebrow">Method</p>
+<h2>Method</h2>
+<div class="placeholder">Coming soon</div>
+</section>
+<section class="wrap wide" id="results">
+<p class="eyebrow">Results</p>
+<h2>Results</h2>
+<div class="placeholder">Coming soon</div>
+</section>
+<section class="wrap" id="bibtex">
+<p class="eyebrow">Citation</p>
+<h2>BibTeX</h2>
+<div class="placeholder">Coming soon</div>
+</section>
+</main>
+<footer class="wrap">
+<p>WorldGPT project page</p>
+</footer>
+</body>
+</html>
