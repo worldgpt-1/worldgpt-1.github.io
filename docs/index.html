@@ -1,80 +1,1415 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0b0f14">
-<title>WorldGPT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>WorldGPT · One world action model for everything that moves</title>
+<meta name="description" content="WorldGPT is one unified world action model for cars, robot arms, dual-arm robots, humanoids, drones and boats, and to our knowledge the first to perceive, reason, imagine and act across land, water and air.">
+<meta name="theme-color" content="#070a12" id="theme-color">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WorldGPT">
+<meta property="og:title" content="WorldGPT · One world action model for everything that moves">
+<meta property="og:description" content="WorldGPT is one unified world action model for cars, robot arms, dual-arm robots, humanoids, drones and boats, and to our knowledge the first to perceive, reason, imagine and act across land, water and air.">
+<meta property="og:url" content="https://worldgpt-1.github.io/">
+<meta property="og:image" content="https://worldgpt-1.github.io/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="WorldGPT: one world action model for everything that moves. Six imagined clips: car, boat, drone, dual-arm robot, robot arm and humanoid hand.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://worldgpt-1.github.io/og.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23070a12%22/%3E%3Csvg x=%228%22 y=%2219.7%22 width=%2248%22 height=%2224.6%22 viewBox=%221.1 1.2 34.4 17.6%22%3E%3Cpath fill=%22%23e6ebf1%22 fill-rule=%22evenodd%22 d=%22M4.075697294197083,1.25C4.288877294197082,1.25,4.499227294197082,1.2916247,4.695287294197083,1.372151L4.839477294197083,1.439796L17.849737294197084,8.33579C17.94393729419708,8.3859,18.009937294197083,8.4739,18.032537294197084,8.57524L18.041137294197082,8.65336L18.041137294197082,11.3467C18.041137294197082,11.4531,17.99403729419708,11.5526,17.91483729419708,11.6201L17.849737294197084,11.6642L4.839477294197083,18.5602C4.6512672941970825,18.66,4.445917294197082,18.7216,4.234877294197083,18.7422L4.075697294197083,18.75L1.6546692941970824,18.75C1.3381347941970825,18.75,1.1573529941970826,18.4079,1.3083683941970825,18.1526L1.3531480941970826,18.0908L7.660317294197083,10.86126C7.775207294197083,10.72928,7.930667294197082,10.64127,8.100507294197083,10.6091L8.203937294197083,10.59659L15.197437294197082,10.23306L15.197437294197082,9.76694L8.203937294197083,9.40331C8.029377294197083,9.39445,7.863977294197083,9.32654,7.733907294197082,9.21285L7.660317294197083,9.139240000000001L1.3531480941970826,1.909218C1.1454722941970825,1.6712989999999999,1.2859296941970826,1.3109146,1.5784772941970826,1.25687858L1.6546692941970824,1.25L4.075697294197083,1.25ZM34.955537294197086,1.25C35.297937294197084,1.25,35.481637294197085,1.651473,35.25703729419708,1.909218L28.95003729419708,9.139240000000001C28.812137294197083,9.29702,28.61583729419708,9.39267,28.406337294197083,9.40331L21.412837294197082,9.76694L21.412837294197082,10.23306L28.406337294197083,10.59659C28.61583729419708,10.60783,28.812137294197083,10.70288,28.95003729419708,10.86126L35.25703729419708,18.0908C35.481637294197085,18.3485,35.297937294197084,18.75,34.955537294197086,18.75L32.53463729419708,18.75C32.26813729419708,18.75,32.00613729419708,18.685,31.770837294197083,18.5602L18.760637294197082,11.6642C18.642737294197083,11.602,18.569137294197084,11.4797,18.569137294197084,11.3467L18.569137294197084,8.65336C18.569137294197084,8.52027,18.642737294197083,8.39842,18.760637294197082,8.33579L31.770837294197083,1.439796C32.00613729419708,1.3150386,32.26813729419708,1.25,32.53463729419708,1.25L34.955537294197086,1.25Z%22/%3E%3C/svg%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Red+Hat+Display:wght@300..900&display=swap">
 <style>
-:root{--bg:#0b0f14;--bg-2:#0f141b;--surface:#131a24;--line:#233041;--line-2:#2f3f54;--text:#eceff3;--text-2:#c3cad4;--muted:#8e99a7;--accent:#52c4ff;color-scheme:dark}
+/* Layout: a film-style project page. A full-bleed wall of six platforms opens it; every section below
+   is a centred two-tone headline over wide media. The XPENG cue is the cars' through-type front light
+   bar, drawn under the title. Look A (blue-black, cold, restrained), headline face Red Hat Display (Manrope
+   was the backup, not loaded). The title is chrome, World in silver and GPT in colour, with a light sweep
+   every few seconds. */
+:root{
+  --bg:#070a12; --bg-rgb:7,10,18; --panel:#0e131d; --panel-2:#141a26;
+  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.16);
+  --text:#f3f5f8; --text-2:#a9b1bd; --text-3:#737b88;
+  --btn-bg:#f3f5f8; --btn-ink:#070a12; --ghost-bg:rgba(20,26,38,.55); --track:#1f2635; --wall-cap:rgba(255,255,255,.82);
+  --display:"Red Hat Display",-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC",sans-serif;
+  --sans:"Geist",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC",sans-serif;
+  --h-w:700; --h-ls:-.035em; --h2-size:clamp(34px,5.2vw,64px);
+  --t1-w:500; --t2-w:800; --t-ls:-.04em;
+  /* title colour: GPT's chrome is two-tone (chosen 11-03 as 2+1, 2 below, sky C). The sky is glacier, near-white at
+     the top (--ct/--ca) deepening to the horizon (--cm); the ground is 2, light under the horizon (--cl) to deep
+     steel (--cb), then a light rim (--cc). The caps span about 24-77% of the gradient box, so the stops sit inside
+     that range. --sa/--sb are the silver of World. */
+  --xl:#dce7f4; --xd:#6587b4;
+  --ct:color-mix(in srgb,var(--xl) 50%,#fff); --ca:var(--ct); --c-at:22%;
+  --cm:color-mix(in srgb,var(--xd) 72%,#0b1220); --cm-at:47%;
+  --cl:color-mix(in srgb,#d3dfee 55%,#fff); --cb:#4b6d9c; --cc:color-mix(in srgb,#d3dfee 60%,#fff);
+  --sa:#e6ebf1; --sb:#97a3b3;
+  --W:0px; --off:0px;
+  /* the nav grows on wide desktop windows, where the hero is large; sidebar and laptop widths keep 60px */
+  --nav-h:clamp(60px,3.6vw,84px);
+  --bar:linear-gradient(90deg,rgba(207,230,255,0),#cfe6ff 18%,#fff 50%,#cfe6ff 82%,rgba(207,230,255,0));
+  --bar-h:2px; --bar-glow:0 0 24px 3px rgba(156,207,255,.45),0 0 70px 12px rgba(120,170,255,.18);
+  --label-ls:.14em; --label-size:clamp(12.5px,.8vw,15px); --label-w:600;
+  --radius:14px; --card-shadow:none; --dim-style:normal;
+  --m-in:#e8e8ea; --m-rgb:#9b9ba6; --m-reason:#e8c75a; --m-depth:#a48df2; --m-sem:#4fb6a5; --m-act:#e57a8a;
+  --cf-a:#f0a33a; --cf-b:#4aa8e8; --cf-c:#7ed378;
+  color-scheme:dark;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);background-image:radial-gradient(1200px 600px at 50% -220px,#16263a 0%,rgba(22,38,58,0) 70%);color:var(--text);font:400 17px/1.65 "IBM Plex Sans","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-h1,h2{font-family:Barlow,"Helvetica Neue",Arial,sans-serif;letter-spacing:-.01em}
-h2{font-size:clamp(1.7rem,3.2vw,2.3rem);font-weight:600;margin:8px 0 16px}
-.wrap{max-width:880px;margin:0 auto;padding:0 20px}
-.wide{max-width:1120px}
-section{margin:72px auto}
-.eyebrow{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
-.hero{text-align:center;padding:76px 0 8px}
-.hero h1{font-size:clamp(3rem,8.5vw,6.2rem);font-weight:700;line-height:.95;letter-spacing:-.02em;margin:18px auto 0}
-.hero h1 .brand{color:var(--accent)}
-.sub{font-family:Barlow,Arial,sans-serif;font-weight:500;font-size:clamp(1.25rem,2.6vw,1.9rem);line-height:1.25;color:var(--text-2);margin:16px auto 0;max-width:820px}
-.authors{color:var(--muted);margin:22px 0 0}
-.links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
-.btn{display:inline-flex;align-items:center;padding:9px 18px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);color:var(--text);font-family:Barlow,Arial,sans-serif;font-weight:600;font-size:1rem;text-decoration:none}
-.btn.disabled{color:var(--muted);border-color:var(--line);background:transparent;cursor:default}
-.frame{border-radius:14px;background:#000;border:1px solid var(--line-2);box-shadow:0 30px 80px rgba(0,0,0,.55);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:"IBM Plex Mono",monospace}
-.placeholder{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:28px 16px;text-align:center;color:var(--muted)}
-.rule{height:1px;background:linear-gradient(90deg,rgba(82,196,255,0),var(--line-2),rgba(82,196,255,0));margin:72px auto;max-width:1120px}
-footer{color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:.78rem;text-align:center;padding-bottom:48px}
-footer p{border-top:1px solid var(--line);padding-top:22px}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 4px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;transition:background .4s,color .4s}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--bg)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:var(--h-w);letter-spacing:var(--h-ls);text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1200px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.label{font-size:var(--label-size);font-weight:var(--label-w);letter-spacing:var(--label-ls);text-transform:uppercase;color:var(--text-3)}
+h2{font-size:var(--h2-size);line-height:1.02}
+h2 .dim{color:var(--text-3);font-style:var(--dim-style)}
+.wrap.wide{max-width:clamp(1200px,82vw,1800px)}
+.lede{color:var(--text-2);font-size:clamp(17px,1.5vw,19px);line-height:1.6;max-width:680px}
+.head{display:grid;gap:18px;justify-items:center;text-align:center;margin-bottom:56px}
+section.block{padding-block:150px 0}
+section.overview{padding-block:110px 0}
+.closing .head{margin-bottom:0}
+/* overview: a short statement on the left, and an index of the page on the right; each row jumps to its section */
+.ov{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,88px);align-items:start}
+@media (max-width:900px){.ov{grid-template-columns:minmax(0,1fr)}}
+.ov-lead{display:grid;gap:18px;align-content:start;min-width:0}
+.ov-top .label{font-size:clamp(15px,1.25vw,21px);color:var(--text-2)}
+.ov-h{font-size:clamp(28px,2.9vw,52px);line-height:1.08}
+.ov-h .dim{display:block;text-wrap:balance}
+.ov-top{grid-column:1/-1;display:grid;gap:18px;min-width:0}
+/* model input -> WorldGPT -> outputs; output rows link to the capability cards and use the same colours */
+.io{margin:clamp(40px,4vw,64px) 0 0;display:grid;grid-template-columns:minmax(0,max-content) minmax(36px,1fr) auto minmax(36px,1fr) minmax(0,max-content);row-gap:14px;align-items:center;padding:clamp(20px,2vw,32px) clamp(20px,2.4vw,44px);border-radius:var(--radius);background:var(--panel);border:1px solid var(--line)}
+.io-k{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin:0}
+.io>.k-in{grid-area:1/1}.io>.io-in{grid-area:2/1}.io>.a1{grid-area:2/2}.io>.io-model{grid-area:2/3}.io>.a2{grid-area:2/4}.io>.k-out{grid-area:1/5;padding-left:10px}.io>.io-out{grid-area:2/5}
+.io-in,.io-out{display:grid;gap:12px;align-content:center;min-width:0}
+.io-in{max-width:440px}.io-out{max-width:400px}
+.io-cam{position:relative;display:grid;grid-template-columns:clamp(96px,8vw,150px) minmax(0,1fr);gap:16px;align-items:center}
+.io-cam figure{position:relative;margin:0 10px 10px 0;aspect-ratio:1;border-radius:10px;overflow:visible}
+.io-cam figure::before,.io-cam figure::after{content:"";position:absolute;inset:0;border-radius:10px;border:1px solid var(--line-2);background:var(--panel-2)}
+.io-cam figure::before{transform:translate(10px,10px);opacity:.5}
+.io-cam figure::after{transform:translate(5px,5px);opacity:.8}
+.io-cam img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;border-radius:10px;border:1px solid var(--line-2)}
+.io-row b{display:block;font-size:clamp(15px,1vw,18px);font-weight:600;line-height:1.3;color:var(--text)}
+.io-row span{display:block;font-size:clamp(13.5px,.85vw,15.5px);line-height:1.45;color:var(--text-2)}
+.io-ins{padding:12px 14px;border-radius:10px;border:1px solid var(--line-2);background:var(--panel-2)}
+.io-ins span{font-style:italic}
+.io-arrow{position:relative;height:2px;border-radius:1px;background:linear-gradient(90deg,rgba(207,230,255,.2),#cfe6ff 60%,#fff);box-shadow:0 0 14px 2px rgba(156,207,255,.28)}
+.io-arrow::after{content:"";position:absolute;right:-1px;top:50%;width:8px;height:8px;margin-top:-4px;border-top:2px solid #fff;border-right:2px solid #fff;transform:rotate(45deg)}
+.io-model{display:grid;justify-items:center;gap:4px;padding:18px clamp(18px,2vw,30px);border-radius:var(--radius);border:1px solid var(--line-2);background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 0 50px rgba(120,170,255,.10);text-align:center}
+.io-model small{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.io-model .wordmark{font-size:clamp(24px,2vw,34px);letter-spacing:-.02em}
+.io-model .wordmark .w1{font-weight:300}
+.io-model .wordmark .w2{font-weight:700}
+/* the nav-sized light bar under the wordmark wherever it stands for the model itself */
+.wm-lock{display:inline-grid;justify-items:center;gap:5px}
+.wm-bar{display:block;width:72%;height:1px;border-radius:1px;background:var(--bar);box-shadow:0 0 8px 1px rgba(156,207,255,.4);opacity:.9}
+.io-out a{display:grid;grid-template-columns:10px minmax(0,1fr);gap:4px 12px;align-items:baseline;padding:9px 10px;border-radius:10px;color:inherit;text-decoration:none;transition:background .2s}
+.io-out a i{width:9px;height:9px;border-radius:50%;background:var(--c);align-self:center}
+.io-out a:hover{background:color-mix(in srgb,var(--text) 5%,transparent)}
+.io-out a span{grid-column:2}
+@media (max-width:760px){
+  .io{grid-template-columns:minmax(0,1fr);justify-items:stretch;gap:0}
+  .io>*{grid-area:auto!important}.io-in,.io-out{max-width:none}.io-k{margin-bottom:12px}.io-out{gap:2px}
+  .io-arrow{justify-self:center;width:2px;height:34px;margin:10px 0;background:linear-gradient(180deg,rgba(207,230,255,.2),#cfe6ff 60%,#fff)}
+  .io-arrow::after{right:auto;left:50%;top:auto;bottom:-1px;margin:0 0 0 -4px;transform:rotate(135deg)}
+  .io-model{justify-self:center}
+}
+.ov-p{color:var(--text-2);font-size:clamp(15.5px,1vw,18.5px);line-height:1.6}
+.ov-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);min-width:0}
+.ov-list a{display:grid;grid-template-columns:minmax(8.5em,1fr) minmax(0,2.2fr) 16px;gap:6px 28px;align-items:baseline;padding:19px 6px;border-bottom:1px solid var(--line);transition:background .2s}
+.ov-list b{font-family:var(--display);font-size:clamp(17px,1.15vw,22px);font-weight:600;letter-spacing:-.01em;line-height:1.25;color:var(--text)}
+.ov-d{color:var(--text-2);font-size:clamp(14.5px,.9vw,17px);line-height:1.5}
+.ov-list svg{align-self:center;width:16px;height:16px;fill:none;stroke:var(--text-3);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s,stroke .2s}
+.ov-list a:hover{background:color-mix(in srgb,var(--text) 4%,transparent)}
+.ov-list a:hover svg{stroke:var(--text);transform:translateX(3px)}
+.ov-list a:focus-visible{outline-offset:-2px}
+@media (max-width:560px){.ov-list a{grid-template-columns:minmax(0,1fr) 16px;padding:14px 6px}.ov-d{display:none}}
+.note{font-size:13px;color:var(--text-3)}
+:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+/* title: two halves of the name, styled by the look */
+/* Each half paints its own fill, so World and GPT can differ. The sweep is one band of light shared by both
+   halves: script measures the word (--W) and each half's offset in it (--off), and --p runs 0 -> 1. */
+@property --p{syntax:"<number>";inherits:true;initial-value:0}
+.wordmark{--gw:calc(var(--W) * .34)}
+.wordmark>span{
+  --tt:var(--ct); --ta:var(--ca); --ta-at:var(--c-at); --tm:var(--cm); --tm-at:var(--cm-at);
+  --tl:var(--cl); --tb:var(--cb); --tc:var(--cc);
+  --glint:linear-gradient(100deg,transparent 0%,color-mix(in srgb,var(--ta) 35%,transparent) 32%,#fff 50%,color-mix(in srgb,var(--ta) 35%,transparent) 68%,transparent 100%);
+  --gx:calc(var(--p) * (var(--W) + var(--gw)) - var(--gw) - var(--off));
+  /* chrome: a bright sky, a dark horizon, then the tinted ground reflected below it */
+  background-image:var(--glint),linear-gradient(176deg,var(--tt) 0%,var(--ta) var(--ta-at),var(--tm) var(--tm-at),color-mix(in srgb,var(--tb) 62%,#0b1220) 50%,var(--tl) 53%,var(--tb) 80%,var(--tc) 100%);
+  background-size:var(--gw) 100%,100% 100%;
+  background-position:var(--gx) 0,0 0;
+  background-repeat:no-repeat;
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+/* GPT carries the colour, World stays silver */
+.wordmark .w1{--tt:#fff;--ta:var(--sa);--ta-at:36%;--tm:var(--sa);--tm-at:36%;--tl:color-mix(in srgb,var(--sa) 55%,#fff);--tb:var(--sb);--tc:color-mix(in srgb,var(--sa) 60%,#fff)}
+.wordmark.glint-ready{animation:glint 6.5s cubic-bezier(.5,0,.3,1) 1.2s infinite}
+.brand.glint-ready{animation-delay:4.4s}
+@keyframes glint{0%{--p:0}34%{--p:1}100%{--p:1}}
+.wordmark .w1{font-weight:var(--t1-w)}
+.wordmark .w2{font-weight:var(--t2-w);padding-right:.04em}
+/* small sizes keep the light/bold contrast the user liked in the nav; at title size a light "World" reads frail,
+   so the hero uses the heavier --t1-w */
+.brand .w1{font-weight:300}
+.brand .w2{font-weight:700}
+
+/* nav: transparent over the hero, solid once scrolled */
+.nav{position:fixed;top:0;left:0;right:0;z-index:30;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(var(--bg-rgb),.8);-webkit-backdrop-filter:saturate(1.4) blur(16px);backdrop-filter:saturate(1.4) blur(16px);border-bottom-color:var(--line)}
+/* the bar spans the window: name at the left edge, links at the right, at every width */
+.nav .wrap{display:flex;align-items:center;gap:28px;height:var(--nav-h);max-width:none;padding-left:max(20px,2vw,env(safe-area-inset-left,0px));padding-right:max(20px,2vw,env(safe-area-inset-right,0px))}
+.brand{font-family:var(--display);font-size:19px;letter-spacing:-.02em}
+/* the nav name carries a short piece of the front light bar under it */
+.nav .brand{position:relative;padding-bottom:3px;font-size:clamp(19px,1.25vw,28px)}
+.nav .brand::after{content:"";position:absolute;left:0;right:8%;bottom:-3px;height:1px;border-radius:1px;background:var(--bar);box-shadow:0 0 8px 1px rgba(156,207,255,.4);opacity:.9}
+/* below 2x a 1px bar is under one device pixel tall and renders grey; 2px keeps a lit row */
+@media (max-resolution:1.99dppx){.wm-bar,.nav .brand::after{height:2px}}
+/* company and project side by side, as on corporate research pages. The XPENG emblem and wordmark are the paths of
+   the logo xpeng.com serves (logo-white.svg), split so the emblem can stand alone; spacing follows that file. */
+.lockup{display:flex;align-items:center;gap:clamp(12px,.9vw,18px)}
+.xp{--xp-h:clamp(15px,1vw,22px);display:flex;align-items:center;gap:calc(var(--xp-h) * .59);color:var(--text)}
+.xp svg{display:block;height:var(--xp-h);width:auto;aspect-ratio:34.4/17.6}
+.xp .xp-word{height:calc(var(--xp-h) * .528);aspect-ratio:101.3/9.3}
+/* emblem only for now; drop this line to show the XPENG wordmark beside it */
+.xp .xp-word{display:none}
+.lock-sep{width:1px;height:clamp(16px,1.1vw,24px);background:var(--line-2)}
+@media (max-width:600px){.xp,.lock-sep{display:none}}
+.nav ul{display:flex;gap:clamp(28px,2vw,44px);list-style:none;margin:0 0 0 auto;padding:0}
+.nav ul a{position:relative;color:var(--text-2);font-size:clamp(14.5px,.86vw,19px);font-weight:500;transition:color .25s}
+.nav ul a:hover,.nav ul a[aria-current="true"]{color:var(--text)}
+/* the section in view: its link turns white and carries a short piece of the light bar, as the name does */
+.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:1px;border-radius:1px;background:var(--bar);box-shadow:0 0 8px 1px rgba(156,207,255,.4);opacity:0;transform:scaleX(.3);transition:opacity .3s,transform .3s}
+.nav ul a[aria-current="true"]::after{opacity:.9;transform:none}
+@media (max-width:560px){.nav ul{gap:16px}.nav ul a{font-size:13.5px}}
+/* narrow screens drop Demos first, then Why one model, so phones keep Embodiments and Benchmarks */
+@media (max-width:620px){.nav ul li:nth-child(4){display:none}}
+@media (max-width:480px){.nav ul li:nth-child(2){display:none}}
+
+/* hero */
+.hero{position:relative;min-height:min(86vh,900px);display:grid;overflow:hidden;isolation:isolate}
+.wall,.wall-labels{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:0;z-index:-2;background:var(--bg)}
+.wall figure{position:relative;margin:0;overflow:hidden;min-width:0;min-height:0;background:#000}
+.wall video{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.72) contrast(1.08) brightness(.9);animation:wall-push 16s ease-in-out infinite alternate}
+/* the cover (user 11-03): one cool grade over all six clips, no grid lines, and a slow push-in on each tile, out of step */
+.wall::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,80,150,.16),rgba(10,20,45,.22));mix-blend-mode:multiply;pointer-events:none}
+.wall figure:nth-child(2n) video{animation-delay:-5s}
+.wall figure:nth-child(3n) video{animation-delay:-11s}
+@keyframes wall-push{from{transform:scale(1)}to{transform:scale(1.07)}}
+.wall-labels{z-index:0;background:none;pointer-events:none}
+.wall-labels span{align-self:start;justify-self:start;margin:14px;font-size:clamp(11.5px,.7vw,13px);font-weight:600;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:var(--wall-cap);padding:4px 10px;border-radius:999px;background:rgba(var(--bg-rgb),.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.wall-labels span:nth-child(-n+3){margin-top:calc(env(safe-area-inset-top,0px) + var(--nav-h) + 14px)}
+.wall-labels span:nth-child(n+4){align-self:end;margin-bottom:18px}
+.wall-labels span.hide{visibility:hidden}
+@media (max-width:700px){.wall{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr))}.wall-labels{display:none}}
+/* two even rows of three; each label sits at the outer corner of its tile (top-left in the upper row,
+   bottom-left in the lower), away from the title. Phones (2x3 wall) hide them. */
+.shade{position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(ellipse 40% 42% at 50% 50%,rgba(var(--bg-rgb),.8) 0%,rgba(var(--bg-rgb),.55) 55%,rgba(var(--bg-rgb),.12) 100%),
+  linear-gradient(180deg,rgba(var(--bg-rgb),.5) 0%,rgba(var(--bg-rgb),0) 16%,rgba(var(--bg-rgb),0) 82%,var(--bg) 100%)}
+.hero-inner .label{font-size:clamp(14px,.95vw,19px);color:var(--text-2)}
+.head .label{font-size:clamp(15px,1.25vw,21px);color:var(--text-2)}
+.hero .btn{font-size:clamp(15px,.9vw,19px);padding:.8em 1.6em}
+.hero-inner{align-self:center;display:grid;justify-items:center;text-align:center;gap:22px;padding-top:120px;padding-bottom:40px}
+.hero h1{font-size:clamp(64px,12.5vw,170px);line-height:.9;letter-spacing:var(--t-ls)}
+.lightbar{width:min(560px,72%);height:var(--bar-h);margin:4px 0;border-radius:2px;background:var(--bar);box-shadow:var(--bar-glow)}
+.hero-sub{font-family:var(--display);font-size:clamp(22px,2.7vw,36px);line-height:1.2;letter-spacing:-.02em;font-weight:400;color:var(--text-2)}
+.hero-sub .hs2{display:inline-block} /* one line where it fits; it may only break after "model" */
+.hero-sub b{color:var(--text);font-weight:inherit}
+.btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;font-size:15px;font-weight:600;border:1px solid var(--line-2);color:var(--text);background:var(--ghost-bg);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.btn.primary{background:var(--btn-bg);color:var(--btn-ink);border-color:var(--btn-bg)}
+.btn[aria-disabled="true"]{color:var(--text-3);cursor:default}
+.hero-note{max-width:52ch;margin:2px auto 0;text-align:center;font-size:clamp(13px,.85vw,16px);color:var(--text-2);text-wrap:balance}
+.hero-note i{display:inline-block;width:7px;height:7px;margin-right:8px;vertical-align:.1em;border-radius:50%;background:var(--m-rgb)}
+.stats-band{display:grid;justify-items:center;padding-block:28px 0}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:900px;width:100%}
+.stat{display:grid;justify-items:center;text-align:center;gap:6px;padding:4px 12px}
+.stat+.stat{border-left:1px solid var(--line-2)}
+/* the cover numbers carry the Benchmarks number's gradient (user 11-05, weight kept at 700) */
+.stat b{font-family:var(--display);font-size:clamp(30px,4vw,48px);font-weight:var(--h-w);letter-spacing:-.035em;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#fff 30%,var(--cb) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.04em}
+.stat span{font-size:clamp(13.5px,.8vw,17px);color:var(--text-2);line-height:1.35;max-width:20ch}
+
+/* landing unfold, an option (UNFOLD in the script, off for now). When on, the hero becomes a scroll track with a sticky
+   stage: the wall of six draws in from full bleed to a row of six under the title, which steps up and shrinks, and the
+   three numbers arrive under the row. Script sets each tile's box and the progress values. */
+.hero.uf{display:block;min-height:0;height:calc(100vh + var(--uf-travel,100vh));overflow:visible;isolation:auto}
+.uf-stage{position:sticky;top:0;height:100vh;overflow:hidden;isolation:isolate;display:grid;background:var(--bg)}
+.uf .wall{display:block;background:var(--bg)}
+.uf .wall figure{position:absolute;left:0;top:0;border-radius:calc(var(--e,0) * 10px);will-change:transform}
+.uf .wall figure::after{content:"";position:absolute;inset:0;border-radius:inherit;border:1px solid rgba(255,255,255,calc(var(--e,0) * .12));pointer-events:none}
+.uf .wall-labels{display:none}
+.uf-cap{position:absolute;left:10px;top:0;transform:translateY(var(--cap-y,12px));font-size:clamp(10px,.6vw,12.5px);font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:var(--wall-cap);padding:4px 9px;border-radius:999px;background:rgba(var(--bg-rgb),.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);pointer-events:none;opacity:var(--cap-o,1)}
+.uf .shade{opacity:var(--shade-o,1)}
+.uf .hero-inner{transform:translateY(var(--hi-y,0px)) scale(var(--hi-s,1))}
+.uf .stats-band{position:absolute;left:0;right:0;padding-block:0}
+.uf .stat{opacity:var(--o,0);transform:translateY(calc((1 - var(--o,0)) * 14px))}
+
+/* capabilities */
+/* two by two from 540 px up, in the wide container up to the laptop width of the wide sections (1240 px), so the cards
+   only ever grow with the window (one row of four made them smaller on a laptop than in a sidebar) and stop short of
+   demo-player size on big screens */
+.abilities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,1.6vw,28px);max-width:1240px;margin-inline:auto}
+@media (max-width:540px){.abilities{grid-template-columns:minmax(0,1fr)}}
+.ab{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-content:start;min-width:0}
+.ab-media{position:relative;margin:0;aspect-ratio:16/11;max-width:100%;border-radius:var(--radius);overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:var(--card-shadow)}
+.ab-media video,.ab-media img{width:100%;height:100%;object-fit:cover;display:block}
+.ab-media figcaption{position:absolute;inset:auto 0 0 0;padding:40px clamp(16px,1.4vw,24px) clamp(14px,1.2vw,20px);font-size:clamp(13.5px,1vw,17px);line-height:1.45;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.84))}
+.ab-media figcaption small{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--m-reason);margin-bottom:4px}
+.ab h3{display:flex;align-items:center;gap:10px;font-size:clamp(24px,1.7vw,32px)}
+.ab h3 i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.ab p{color:var(--text-2);font-size:clamp(15.5px,1vw,18.5px);line-height:1.55;max-width:62ch}
+
+/* demos */
+.seg{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:4px;padding:4px;border-radius:999px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--card-shadow)}
+.seg button{all:unset;cursor:pointer;padding:9px 20px;border-radius:999px;font-size:clamp(15px,.9vw,18px);font-weight:600;color:var(--text-2)}
+.seg button[aria-selected="true"]{background:var(--btn-bg);color:var(--btn-ink)}
+.seg button:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.seg-row{display:flex;justify-content:center;margin-bottom:28px}
+/* clips within an embodiment: numbered buttons with previous / next; hidden (space kept) when there is one clip */
+.pager{display:flex;justify-content:center;align-items:center;gap:8px;margin:-12px 0 24px}
+.pager.single{visibility:hidden}
+.pg-nums{display:flex;gap:6px}
+.pg-nums button,.pg-arrow{all:unset;cursor:pointer;box-sizing:border-box;width:clamp(32px,2vw,40px);height:clamp(32px,2vw,40px);border-radius:50%;display:grid;place-items:center;font-size:clamp(13px,.8vw,15.5px);font-weight:600;font-variant-numeric:tabular-nums;color:var(--text-2);transition:background .2s,color .2s,border-color .2s}
+.pg-nums button{border:1px solid var(--line-2)}
+.pg-nums button:hover,.pg-arrow:hover{color:var(--text);border-color:var(--text-3)}
+.pg-nums button[aria-pressed="true"]{background:var(--btn-bg);color:var(--btn-ink);border-color:var(--btn-bg)}
+.pg-arrow svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pg-nums button:focus-visible,.pg-arrow:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+@media (max-width:640px){.seg{flex-wrap:wrap;max-width:100%;justify-content:center;border-radius:22px}.seg button{padding:8px 14px;font-size:14px;white-space:nowrap}}
+.player{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+.player.side{grid-template-columns:minmax(0,max(700px,calc(min(74vh,1000px) * var(--ar,1)))) minmax(320px,1fr);grid-template-rows:auto auto 1fr;column-gap:clamp(28px,3vw,56px);align-items:start}
+.player.side>.stage,.player.side>.scrub{grid-column:1}
+.player.side>.info{grid-column:2;grid-row:1/4;grid-template-columns:minmax(0,1fr);gap:24px;margin-top:0;padding-top:0;border-top:0}
+.stage{position:relative;width:100%;max-width:100%;margin-inline:auto;background:#000;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--card-shadow)}
+.stage video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;background:#000}
+#v-sim{clip-path:inset(0 calc(100% - var(--split,50%)) 0 0)}
+.stage.solo #v-sim{clip-path:none}
+.stage.solo #v-real,.stage.solo .divider,.stage.solo .split,.stage.solo .tag-r{display:none}
+.divider{position:absolute;top:0;bottom:0;left:var(--split,50%);width:2px;margin-left:-1px;background:rgba(255,255,255,.9);pointer-events:none}
+.divider::after{content:"";position:absolute;top:50%;left:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:rgba(255,255,255,.95) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l-6 6 6 6M15 6l6 6-6 6' fill='none' stroke='%23070a12' stroke-width='2'/%3E%3C/svg%3E") center/18px no-repeat;box-shadow:0 4px 16px rgba(0,0,0,.5)}
+.split{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.stage:focus-within{outline:2px solid var(--text);outline-offset:3px}
+.tag{position:absolute;bottom:12px;font-size:clamp(11px,.7vw,14px);font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:rgba(8,10,16,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);pointer-events:none}
+.tag-l{left:12px;color:#fff}
+.tag-r{right:12px;color:rgba(255,255,255,.75)}
+.scrub{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center}
+.pp{all:unset;cursor:pointer;width:clamp(40px,2.4vw,50px);height:clamp(40px,2.4vw,50px);border-radius:50%;display:grid;place-items:center;background:var(--btn-bg);color:var(--btn-ink)}
+.pp svg{width:14px;height:14px;fill:currentColor}
+.pp:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+.track{position:relative;min-width:0;display:grid;gap:8px}
+.bars,.labels{display:flex;gap:4px}
+.bars button{all:unset;cursor:pointer;height:6px;min-width:0;border-radius:3px;background:color-mix(in srgb,var(--c) 30%,var(--track))}
+.bars button.on{background:var(--c)}
+.bars button:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+.labels span{min-width:0;overflow:hidden;white-space:nowrap;font-size:clamp(11px,.68vw,14px);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
+.labels span.on{color:var(--text)}
+.head-dot{position:absolute;top:-4px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--text);box-shadow:0 0 0 3px var(--bg);pointer-events:none}
+.time{font-size:clamp(12.5px,.75vw,15px);color:var(--text-3);min-width:6ch;text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:640px){.labels{display:none}}
+.now{display:none;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2)}
+.now i{width:8px;height:8px;border-radius:50%;background:var(--c,transparent)}
+@media (max-width:640px){.now{display:flex}}
+.player.lbl-tight .labels span{letter-spacing:.03em}
+.player.lbl-none .labels{display:none}
+.player.lbl-none .now{display:flex}
+.info{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:40px;padding-top:18px;border-top:1px solid var(--line);margin-top:6px}
+@media (max-width:860px){.info{grid-template-columns:minmax(0,1fr);gap:24px}}
+.info-main{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-content:start}
+.info h3{font-size:clamp(26px,2.2vw,44px);line-height:1.1}
+.ins{color:var(--text-2);font-size:clamp(15.5px,.95vw,18.5px)}
+.ins b{display:block;font-size:clamp(11px,.68vw,13.5px);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:2px}
+.chip{justify-self:start;font-size:clamp(12.5px,.75vw,15px);font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--line-2);color:var(--text)}
+.plan{margin:0;padding-left:1.2em;display:grid;gap:4px;color:var(--text-2);font-size:clamp(15px,.92vw,18px)}
+.desc{color:var(--text-2);font-size:clamp(15.5px,.95vw,18.5px)}
+.qa{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-content:start;padding:20px 22px;border-radius:var(--radius);background:var(--panel);border:1px solid var(--line);box-shadow:var(--card-shadow);transition:border-color .35s}
+.qa.live{border-color:color-mix(in srgb,var(--m-reason) 75%,transparent)}
+.info .chip{transition:opacity .6s}
+.info .chip.wait{opacity:0;visibility:hidden}
+/* streamed reasoning: every word is laid out from the start and shown in turn; a caret marks the writing point */
+.qa.gated .q:not(.shown),.qa.gated .w:not(.shown),.g-say .w:not(.shown){visibility:hidden}
+.qa .w,.g-say .w{position:relative}
+.qa .w.caret::after,.g-say .w.caret::after{content:"";position:absolute;left:100%;top:.18em;width:.42em;height:1.05em;margin-left:3px;border-radius:1px;background:var(--m-reason);animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+.qa>.lbl{grid-row:1}
+.qa>.qa-hold,.qa>div:first-of-type{grid-row:2;grid-column:1}
+.qa-hold{display:none;color:var(--text-3);font-size:clamp(15px,.92vw,18px);line-height:1.6}
+.qa.wait .qa-hold{display:block}
+.qa .lbl{display:flex;align-items:center;gap:8px;font-size:clamp(11px,.68vw,13.5px);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.qa .lbl i{width:7px;height:7px;border-radius:50%;background:var(--m-reason)}
+.qa .q{font-weight:600;font-size:clamp(15px,.92vw,18px);line-height:1.45}
+.qa .a{color:var(--text-2);font-size:clamp(15px,.92vw,18px);line-height:1.6;margin-top:4px}
+
+/* counterfactual */
+.cf-grid{display:grid;grid-template-columns:repeat(var(--n,2),minmax(0,1fr));gap:20px}
+@media (max-width:900px){.cf-grid.n3{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:640px){.cf-grid,.cf-grid.n3{grid-template-columns:minmax(0,1fr)}}
+.cf-pick{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:100%}
+.cf-seg{max-width:100%}
+.cf-seg button{padding:8px 13px}
+.cf-col{grid-row:span 3;grid-template-rows:subgrid;row-gap:14px}
+.cf-seg .cf-g{align-self:center;padding:0 4px 0 14px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)}
+.cf-seg .cf-g:first-child{padding-left:10px}
+.cf-col{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-content:start;min-width:0}
+.cf-col video{width:100%;aspect-ratio:var(--ar,1);max-width:100%;border-radius:var(--radius);background:#000;display:block;border:1px solid var(--line);box-shadow:var(--card-shadow)}
+.cf-ins{font-family:var(--display);font-size:clamp(19px,1.9vw,24px);line-height:1.25}
+.cf-ins small{display:flex;align-items:center;gap:8px;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--c);margin-bottom:8px}
+.cf-ins small i{width:16px;height:3px;border-radius:2px;background:var(--c)}
+.cf-col .a{color:var(--text-2);font-size:15px;line-height:1.6}
+.cf-paths{margin-top:28px;display:grid;grid-template-columns:repeat(var(--n,2),minmax(0,1fr));gap:28px;align-items:center;padding:20px;border-radius:var(--radius);background:var(--panel);border:1px solid var(--line);box-shadow:var(--card-shadow)}
+.cf-paths .cf-key{grid-column:2/-1}
+@media (max-width:900px){.cf-paths.n3{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:640px){.cf-paths,.cf-paths.n3{grid-template-columns:minmax(0,1fr)}.cf-paths .cf-key{grid-column:auto}}
+.cf-paths video{width:100%;max-width:min(100%,640px);aspect-ratio:512/456;border-radius:10px;display:block;background:#14171c}
+.cf-key{display:grid;gap:10px;font-size:14.5px;color:var(--text-2)}
+.cf-key span{display:flex;align-items:center;gap:10px}
+.cf-key i{width:22px;height:3px;border-radius:2px;background:var(--c)}
+.cf-key strong{color:var(--text);font-weight:600}
+
+/* benchmarks */
+.bm-top{display:grid;justify-items:center;text-align:center;gap:8px;margin-bottom:64px}
+.bm-top b{font-family:var(--display);font-size:clamp(96px,14vw,180px);line-height:.9;font-weight:var(--t2-w);letter-spacing:-.05em;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#fff 30%,var(--cb) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.04em}
+.bm-top span{color:var(--text-2);font-size:17px}
+/* benchmarks: one row per area, one table per board */
+.areas{display:grid;gap:56px}
+.area-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.area-h .k{margin:0;font-family:var(--sans);letter-spacing:var(--label-ls)}
+.area-h .k-note{color:var(--text-3);font-size:clamp(13px,.8vw,15px)}
+.boards{display:flex;flex-wrap:wrap;gap:16px}
+.board{flex:var(--g,4) 1 min(100%,var(--b,360px));display:grid;gap:14px;align-content:start;padding:20px 20px 16px;border-radius:var(--radius);background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);min-width:0}
+@media (min-width:1600px){.board:not(.wide){max-width:calc(var(--b,360px) * 2)}}
+.board.wide{flex-basis:100%}
+.board header{display:grid;gap:4px}
+.board h3{font-size:clamp(20px,1.4vw,26px);line-height:1.15;display:flex;align-items:center;gap:10px}
+.board h3 .r{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.04em;padding:3px 9px;border-radius:999px;background:color-mix(in srgb,var(--text) 10%,transparent)}
+.board header p{color:var(--text-3);font-size:clamp(13px,.8vw,14.5px);line-height:1.4}
+.board.pending{border-style:dashed;background:transparent}
+.board.pending p{color:var(--text-3);font-size:14.5px}
+.bt-wrap{overflow-x:auto;min-width:0}
+.bt{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.bt th{font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text-3);text-align:right;padding:6px 8px 8px;border-bottom:1px solid var(--line-2);white-space:nowrap}
+.bt th span{letter-spacing:0}
+/* boards with many columns (hw:1) let a header take two lines instead of making the table scroll */
+.board.hw .bt th{white-space:normal;vertical-align:bottom;letter-spacing:.03em}
+.board.hw .bt th span{display:block}
+.board.hw .bt th,.board.hw .bt td{padding-left:4px;padding-right:4px}
+.bt th.key{color:var(--text-2)}
+.bt td{padding:8px;text-align:right;border-bottom:1px solid var(--line);font-size:clamp(13.5px,.85vw,15.5px);color:var(--text-2);white-space:nowrap}
+.bt th:first-child,.bt td:first-child{text-align:left}
+.bt td:first-child{color:var(--text);white-space:normal;min-width:9em}
+.bt-wrap.scrolls{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 44px),transparent)}
+.bt-wrap.scrolls.end{-webkit-mask-image:none;mask-image:none}
+.swipe{display:none;margin-top:-6px;font-size:12px;color:var(--text-3)}
+.bt-wrap.scrolls+.swipe{display:block}
+@media (max-width:640px){.bt th:first-child,.bt td:first-child{position:sticky;left:0;z-index:1;background:color-mix(in srgb,var(--panel) 60%,var(--panel-2))}
+  .bt tr.me td:first-child{background:color-mix(in srgb,var(--cb) 24%,color-mix(in srgb,var(--panel) 60%,var(--panel-2)))}
+  .bt td:first-child{min-width:7.5em}}
+.bt td:first-child small{display:block;color:var(--text-3);font-size:11.5px;font-weight:400;margin-top:1px}
+.bt tr:last-child td{border-bottom:0}
+.bt td.key{color:var(--text)}
+.bt td.best{color:var(--text);font-weight:700}
+.bt tr.me td{background:color-mix(in srgb,var(--cb) 24%,transparent);color:var(--text)}
+.bt tr.me td:first-child{box-shadow:inset 3px 0 0 var(--cl);font-weight:700}
+.bt tr.ref td{color:var(--text-3)}
+.bt .na{color:var(--text-3)}
+.board .src{font-size:12px;color:var(--text-3);line-height:1.5}
+.bm-asof{margin:-40px 0 56px;text-align:center;color:var(--text-3);font-size:clamp(13px,.8vw,15px)}
+/* cross-embodiment grid */
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.g-tile{position:relative;margin:0;aspect-ratio:16/10;max-width:100%;border-radius:var(--radius);overflow:hidden;background:var(--panel);border:1px solid var(--line);cursor:pointer;transition:border-color .2s}
+.g-tile:hover{border-color:var(--text-3)}
+.g-tile:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.grid-hint{margin:14px auto 0;text-align:center;color:var(--text-3);font-size:clamp(13px,.8vw,15px)}
+.g-tile video{width:100%;height:100%;object-fit:cover;display:block}
+.g-tile figcaption{position:absolute;left:12px;top:12px;font-size:clamp(11px,.7vw,13px);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--wall-cap);padding:4px 10px;border-radius:999px;background:rgba(var(--bg-rgb),.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.g-phase{position:absolute;right:12px;top:12px;display:flex;align-items:center;gap:6px;font-size:clamp(11px,.7vw,12.5px);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;padding:4px 10px;border-radius:999px;background:rgba(var(--bg-rgb),.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.g-phase i{width:7px;height:7px;border-radius:50%;background:var(--c,#fff)}
+.g-say{position:absolute;left:0;right:0;bottom:0;margin:0;padding:32px 14px 12px;font-size:clamp(12.5px,.8vw,15px);line-height:1.4;color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.75));opacity:0;transition:opacity .4s;pointer-events:none}
+.g-say.on{opacity:1}
+.g-say b{display:block;font-size:clamp(11px,.65vw,12px);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--m-reason);margin-bottom:3px}
+.grid-note{margin:16px auto 0;width:max-content;max-width:100%;padding:6px 14px;border:1px dashed var(--line-2);border-radius:999px;color:var(--text-3);font-size:13px;text-align:center}
+@media (max-width:1000px){.grid6{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.g-phase{display:none}}
+/* teacher tree: one model in the cloud, distilled into a smaller model for each embodiment. Trunk and branch are pieces
+   of the front light bar; each leaf shows its embodiment's tile from the cross-embodiment grid. */
+.tree{display:grid;justify-items:center}
+.t-root{display:grid;justify-items:center;gap:4px;text-align:center;padding:20px 32px;border-radius:var(--radius);border:1px solid var(--line-2);background:linear-gradient(180deg,var(--panel-2),var(--panel));box-shadow:0 0 60px rgba(120,170,255,.10)}
+.t-root small,.t-stem span{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.t-root b{font-family:var(--display);font-size:clamp(24px,2.2vw,32px);font-weight:var(--h-w);letter-spacing:-.03em;line-height:1.1}
+.t-root>span{color:var(--text-2);font-size:14.5px}
+.t-root .wordmark{font-size:clamp(28px,2.6vw,40px);letter-spacing:-.02em;padding-bottom:2px}
+.t-root .wordmark .w1{font-weight:300}
+.t-root .wordmark .w2{font-weight:700}
+.t-stem{position:relative;width:2px;height:64px;border-radius:1px;background:linear-gradient(180deg,rgba(207,230,255,.2),#cfe6ff 50%,#fff);box-shadow:0 0 14px 2px rgba(156,207,255,.32)}
+.t-stem::after{content:"";position:absolute;left:50%;top:0;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:#fff;box-shadow:0 0 12px 4px rgba(156,207,255,.7);opacity:0;animation:t-flow 3.6s cubic-bezier(.45,0,.55,1) 1s infinite}
+@keyframes t-flow{0%{top:0;opacity:0}12%{opacity:1}70%{top:100%;opacity:1}78%,100%{top:100%;opacity:0}}
+.t-stem span{position:absolute;left:16px;top:50%;transform:translateY(-50%);white-space:nowrap}
+.t-stem span.up{left:auto;right:16px}
+/* the up flow: what every embodiment sees, in pixels, goes into the teacher */
+.t-stem::before{content:"";position:absolute;left:50%;top:100%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:#cfe6ff;box-shadow:0 0 10px 3px rgba(156,207,255,.5);opacity:0;animation:t-up 3.6s cubic-bezier(.45,0,.55,1) 2.8s infinite}
+@keyframes t-up{0%{top:100%;opacity:0}12%{opacity:.85}70%{top:0;opacity:.85}78%,100%{top:0;opacity:0}}
+.t-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,56px);max-width:1100px;margin:0 auto clamp(40px,4vw,64px);text-align:left}
+@media (max-width:760px){.t-steps{grid-template-columns:minmax(0,1fr)}}
+.t-step{display:grid;gap:10px;align-content:start;padding-top:16px;border-top:1px solid var(--line-2)}
+.t-step h3{display:flex;align-items:baseline;gap:12px;font-size:clamp(22px,1.6vw,30px)}
+.t-step h3 small{font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--text-3)}
+.t-step p{margin:0;color:var(--text-2);font-size:clamp(15.5px,1vw,18.5px);line-height:1.6}
+.t-stu{position:relative;display:grid;justify-items:center;gap:1px;padding:7px 12px;border-radius:9px;border:1px dashed var(--line-2);background:var(--panel);text-align:center}
+.t-stu b{font-size:13.5px;font-weight:600;line-height:1.2}
+.t-stu small{font-size:11.5px;color:var(--text-3);line-height:1.2}
+.t-kids{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));width:100%;max-width:1240px}
+.t-kids::before{content:"";position:absolute;top:-1px;left:calc(100% / 12);right:calc(100% / 12);height:2px;border-radius:1px;background:linear-gradient(90deg,#9fc3ea,#cfe6ff 30%,#fff 50%,#cfe6ff 70%,#9fc3ea);box-shadow:0 0 16px 2px rgba(156,207,255,.32)}
+.t-kid{position:relative;display:grid;gap:10px;justify-items:center;padding:30px clamp(4px,.5vw,8px) 0;min-width:0}
+.t-kid::after{content:"";position:absolute;top:0;left:50%;width:2px;height:30px;margin-left:-1px;background:linear-gradient(180deg,#cfe6ff,rgba(207,230,255,.15))}
+.t-kid figure{position:relative;margin:0;width:100%;aspect-ratio:16/10;border-radius:10px;overflow:hidden;border:1px solid var(--line-2);background:var(--panel);transition:border-color .25s}
+.t-kid img,.t-kid video{width:100%;height:100%;object-fit:cover;display:block}
+.t-kid video{position:absolute;inset:0;opacity:0;transition:opacity .3s}
+.t-kid figure.on{border-color:var(--text-3)}
+.t-kid figure.on video{opacity:1}
+.t-kid b{text-align:center;font-size:clamp(13.5px,.85vw,16px);font-weight:600;line-height:1.3}
+@media (max-width:700px){.t-kids{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:16px;padding-top:16px}.t-kids::before{left:0;right:0}.t-kid{padding-top:0}.t-kid::after{display:none}}
+@media (max-width:520px){.t-stem span{font-size:11px;letter-spacing:.1em}}
+.ab{scroll-margin-top:calc(var(--nav-h) + 28px)}
+.fine{margin:36px auto 0;max-width:820px;text-align:center;font-size:13px;line-height:1.6;color:var(--text-3)}
+
+/* authors and citation */
+.credits{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;max-width:1000px;margin:72px auto 0;text-align:left}
+@media (max-width:860px){.credits{grid-template-columns:minmax(0,1fr)}}
+.cr-block{display:grid;gap:14px;align-content:start;padding:24px;border-radius:var(--radius);background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);min-width:0}
+.cr-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.authors{font-size:clamp(15px,.95vw,18px);line-height:1.7;color:var(--text)}
+.authors.pending{color:var(--text-3)}
+.bib{margin:0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.6;color:var(--text-2);white-space:pre-wrap;overflow-wrap:anywhere}
+.copy{all:unset;cursor:pointer;font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:999px;border:1px solid var(--line-2);color:var(--text-2)}
+.copy:hover{color:var(--text);border-color:var(--text-3)}
+.copy:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+footer{margin-top:160px;border-top:1px solid var(--line);padding-block:36px 52px;color:var(--text-3);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;align-items:baseline}
+footer .brand{font-size:18px}
+
 </style>
 </head>
 <body>
-<header class="hero wrap wide">
-<p class="eyebrow">Project page</p>
-<h1>World<span class="brand">GPT</span></h1>
-<p class="sub">Subtitle coming soon</p>
-<p class="authors">Authors coming soon</p>
-<nav class="links" aria-label="Paper links">
-<a class="btn disabled">Paper</a>
-<a class="btn disabled">arXiv</a>
-<a class="btn disabled">Code</a>
-<a class="btn" href="#bibtex">BibTeX</a>
+<nav class="nav" id="nav" aria-label="Sections">
+  <div class="wrap">
+    <div class="lockup">
+      <a class="xp" href="https://www.xpeng.com/" target="_blank" rel="noopener" aria-label="XPENG"><svg class="xp-mark" viewBox="1.1 1.2 34.4 17.6" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M4.075697294197083,1.25C4.288877294197082,1.25,4.499227294197082,1.2916247,4.695287294197083,1.372151L4.839477294197083,1.439796L17.849737294197084,8.33579C17.94393729419708,8.3859,18.009937294197083,8.4739,18.032537294197084,8.57524L18.041137294197082,8.65336L18.041137294197082,11.3467C18.041137294197082,11.4531,17.99403729419708,11.5526,17.91483729419708,11.6201L17.849737294197084,11.6642L4.839477294197083,18.5602C4.6512672941970825,18.66,4.445917294197082,18.7216,4.234877294197083,18.7422L4.075697294197083,18.75L1.6546692941970824,18.75C1.3381347941970825,18.75,1.1573529941970826,18.4079,1.3083683941970825,18.1526L1.3531480941970826,18.0908L7.660317294197083,10.86126C7.775207294197083,10.72928,7.930667294197082,10.64127,8.100507294197083,10.6091L8.203937294197083,10.59659L15.197437294197082,10.23306L15.197437294197082,9.76694L8.203937294197083,9.40331C8.029377294197083,9.39445,7.863977294197083,9.32654,7.733907294197082,9.21285L7.660317294197083,9.139240000000001L1.3531480941970826,1.909218C1.1454722941970825,1.6712989999999999,1.2859296941970826,1.3109146,1.5784772941970826,1.25687858L1.6546692941970824,1.25L4.075697294197083,1.25ZM34.955537294197086,1.25C35.297937294197084,1.25,35.481637294197085,1.651473,35.25703729419708,1.909218L28.95003729419708,9.139240000000001C28.812137294197083,9.29702,28.61583729419708,9.39267,28.406337294197083,9.40331L21.412837294197082,9.76694L21.412837294197082,10.23306L28.406337294197083,10.59659C28.61583729419708,10.60783,28.812137294197083,10.70288,28.95003729419708,10.86126L35.25703729419708,18.0908C35.481637294197085,18.3485,35.297937294197084,18.75,34.955537294197086,18.75L32.53463729419708,18.75C32.26813729419708,18.75,32.00613729419708,18.685,31.770837294197083,18.5602L18.760637294197082,11.6642C18.642737294197083,11.602,18.569137294197084,11.4797,18.569137294197084,11.3467L18.569137294197084,8.65336C18.569137294197084,8.52027,18.642737294197083,8.39842,18.760637294197082,8.33579L31.770837294197083,1.439796C32.00613729419708,1.3150386,32.26813729419708,1.25,32.53463729419708,1.25L34.955537294197086,1.25Z"/></svg><svg class="xp-word" viewBox="45.9 5.5 101.3 9.3" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M104.72023729419708,7.25189L104.72023729419708,5.53027L89.39143729419709,5.53027L89.39143729419709,7.25189L104.72023729419708,7.25189ZM124.07323729419709,12.8917L124.07323729419709,14.7806L123.81923729419708,14.7806L112.47923729419708,7.42052L112.47923729419708,14.7806L110.71523729419708,14.7806L110.71523729419708,5.53027L112.78723729419708,5.53028L124.07323729419709,12.8917ZM124.07323729419709,12.8917L124.07323729419709,5.53027L125.83723729419708,5.53027L125.83723729419708,14.7806L124.07323729419709,14.7806L124.07323729419709,12.8918L124.07323729419709,12.8917ZM147.2312372941971,7.25189L147.2312372941971,5.53027L136.22223729419707,5.53027L136.01623729419708,5.53478C133.54923729419707,5.64256,131.58223729419709,7.67011,131.58223729419709,10.15544C131.58223729419709,12.7098,133.65923729419708,14.7806,136.22223729419707,14.7806L147.2312372941971,14.7806L147.2312372941971,9.29466L137.43823729419708,9.29466L137.43823729419708,11.01618L145.4652372941971,11.01578L145.4652372941971,13.0584L136.22223729419707,13.0591L136.05123729419708,13.0542C134.52223729419708,12.9659,133.3092372941971,11.7018,133.3092372941971,10.15544C133.3092372941971,8.55176,134.6132372941971,7.25179,136.22223729419707,7.25179L147.2312372941971,7.25189ZM49.18913729419708,5.54517L53.98583729419708,8.98487L58.78413729419708,5.54517L61.77223729419708,5.54517L55.48063729419708,10.05564L62.12233729419708,14.8188L59.134237294197085,14.8188L53.98583729419708,11.12737L48.839037294197084,14.8188L45.85093729419708,14.8188L52.49203729419708,10.05564L46.201037294197086,5.54517L49.18913729419708,5.54517ZM83.39963729419708,8.29252C83.39963729419708,6.7876,82.17553729419708,5.56763,80.66543729419708,5.56763L68.08533729419709,5.56763L68.08533729419709,7.29045L80.61153729419708,7.29045L80.72103729419709,7.29633C81.22493729419708,7.35073,81.61693729419709,7.77599,81.61693729419709,8.29252C81.61693729419709,8.84595,81.16693729419708,9.2947,80.61153729419708,9.2947L68.08533729419709,9.2947L68.08533729419709,14.7806L69.84993729419708,14.7806L69.84993729419708,11.01591L80.66543729419708,11.01742L80.83203729419708,11.01245C82.26453729419708,10.92666,83.39963729419708,9.74171,83.39963729419708,8.29252ZM104.72023729419708,9.29468L104.72023729419708,11.01619L91.15563729419708,11.0158L91.15563729419708,13.0584L104.72023729419708,13.059L104.72023729419708,14.7806L89.39143729419709,14.7806L89.39143729419709,9.29468L104.72023729419708,9.29468Z"/></svg></a><span class="lock-sep" aria-hidden="true"></span>
+      <a class="brand wordmark" href="#top"><span class="w1">World</span><span class="w2">GPT</span></a>
+    </div>
+    <ul>
+      <li><a href="#unified">Embodiments</a></li>
+      <li><a href="#teacher">Why one model</a></li>
+      <li><a href="#benchmarks">Benchmarks</a></li>
+      <li><a href="#demos">Demos</a></li>
+    </ul>
+  </div>
 </nav>
+
+<header class="hero" id="top">
+  <div class="wall" id="wall" aria-hidden="true"></div>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="wall-labels" id="wall-labels" aria-hidden="true"></div>
+  <div class="hero-inner wrap">
+    <p class="label">XPENG · Physical AI</p>
+    <h1 class="wordmark"><span class="w1">World</span><span class="w2">GPT</span></h1>
+    <span class="lightbar" aria-hidden="true"></span>
+    <p class="hero-sub" id="hero-sub"><b>One world action model</b> <span class="hs2">for everything that moves.</span></p>
+    <div class="btns">
+      <a class="btn primary" href="#unified">See it in action</a>
+      <span class="btn" aria-disabled="true">Technical report · soon</span>
+    </div>
+    <p class="hero-note"><i aria-hidden="true"></i>Everything playing behind this title is imagined by WorldGPT, from about a second of real camera input.</p>
+  </div>
 </header>
-<main>
-<section class="wrap wide" id="demo">
-<div class="frame">Demo video coming soon</div>
+<div class="stats-band wrap">
+    <div class="stats" aria-label="At a glance">
+      <div class="stat"><b>6</b><span>embodiments on land, water and air</span></div>
+      <div class="stat"><b>1</b><span>model across all of them</span></div>
+      <div class="stat"><b id="n-first">10</b><span id="n-first-l">first places on public benchmarks</span></div>
+    </div>
+</div>
+
+<section class="block overview" id="overview" aria-labelledby="ov-h">
+  <div class="wrap wide">
+    <div class="ov">
+      <div class="ov-top">
+        <p class="label">Overview</p>
+        <h2 class="ov-h" id="ov-h"><span class="dim">Learns from everything that moves.</span>Teaches everything that moves.</h2>
+      </div>
+      <div class="ov-lead">
+        <p class="ov-p">WorldGPT is one world action model, trained on cars, robot arms, dual-arm robots, humanoids, drones and boats together. From about a second of camera input and an instruction, it imagines how the world will unfold and plans how to act in it, while seeing in depth and segmentation and reasoning in language. It is built as a teacher: one large model in the cloud, distilled into a smaller on-device student for each embodiment. To our knowledge it is the first model to do all of this across land, water and air.</p>
+      </div>
+      <ol class="ov-list" aria-label="On this page">
+        <li><a href="#unified"><b>Cross-embodiment</b><span class="ov-d">The same weights drive a car, fly a drone, steer a boat and move arms and hands, at once.</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></a></li>
+        <li><a href="#teacher"><b>Why one model</b><span class="ov-d">It learns from every embodiment through the pixels they share, then is distilled into an on-device student for each.</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></a></li>
+        <li><a href="#benchmarks"><b>Benchmarks</b><span class="ov-d">First on <span class="n-first">10</span> public benchmarks, in driving, manipulation, visual understanding and video generation.</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></a></li>
+        <li><a href="#capabilities"><b>Capabilities</b><span class="ov-d">Perceive, reason, imagine and act, in one model instead of a pipeline.</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></a></li>
+        <li><a href="#demos"><b>Demos</b><span class="ov-d"><span class="n-clips">38</span> clips across six embodiments, each next to the real recording. Everything after the first second is imagined.</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></a></li>
+        <li><a href="#instructions"><b>Controllable futures</b><span class="ov-d">Change the instruction, and the predicted future changes with it.</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></a></li>
+      </ol>
+    </div>
+    <figure class="io" aria-label="WorldGPT's input and output: about a second of camera video and an instruction go in; future video, actions for each embodiment, depth and segmentation, and reasoning come out">
+      <p class="io-k k-in">Input</p>
+      <div class="io-in">
+        <div class="io-cam io-row"><figure><img src="media/io_cam.jpg" alt="" decoding="async"></figure><div><b>Camera video</b><span>About one second, from one camera or several</span></div></div>
+        <div class="io-ins io-row"><b>Instruction</b><span>“Make way through the middle tree from the right side.”</span></div>
+      </div>
+      <div class="io-arrow a1" aria-hidden="true"></div>
+      <div class="io-model"><small>One model</small><div class="wm-lock"><b class="wordmark"><span class="w1">World</span><span class="w2">GPT</span></b><i class="wm-bar" aria-hidden="true"></i></div></div>
+      <div class="io-arrow a2" aria-hidden="true"></div>
+      <p class="io-k k-out">Output</p>
+      <div class="io-out">
+        <a class="io-row" href="#ab-imagine" style="--c:var(--m-rgb)"><i></i><b>Future video</b><span>Seconds ahead, on every camera</span></a>
+        <a class="io-row" href="#ab-act" style="--c:var(--m-act)"><i></i><b>Actions</b><span>For each embodiment: steering, joints, thrust</span></a>
+        <a class="io-row" href="#ab-perceive" style="--c:var(--m-depth)"><i></i><b>Depth and segmentation</b><span>For what it sees and what it imagines</span></a>
+        <a class="io-row" href="#ab-reason" style="--c:var(--m-reason)"><i></i><b>Reasoning</b><span>About the scene and its decisions, in plain language</span></a>
+      </div>
+    </figure>
+  </div>
 </section>
-<div class="rule"></div>
-<section class="wrap" id="abstract">
-<p class="eyebrow">Abstract</p>
-<h2>Overview</h2>
-<div class="placeholder">Coming soon</div>
+
+<section class="block" id="unified" aria-labelledby="uni-h">
+  <div class="wrap wide">
+    <div class="head">
+      <p class="label">Cross-embodiment</p>
+      <h2 id="uni-h">One model. Six embodiments.<br><span class="dim">At once.</span></h2>
+      <p class="lede">The same weights drive the car, fly the drone, steer the boat and move the arms and hands. In every tile, WorldGPT imagines what happens next and acts in it.</p>
+    </div>
+    <div class="grid6" id="grid6"></div>
+    <p class="grid-hint">Select a tile to watch it next to the real recording.</p>
+    <p class="grid-note" id="grid-note" hidden></p>
+  </div>
 </section>
-<section class="wrap wide" id="method">
-<p class="eyebrow">Method</p>
-<h2>Method</h2>
-<div class="placeholder">Coming soon</div>
+
+<section class="block" id="teacher" aria-labelledby="teach-h">
+  <div class="wrap wide">
+    <div class="head">
+      <p class="label">Why one model</p>
+      <h2 id="teach-h">One teacher.<br><span class="dim">Every embodiment learns from it.</span></h2>
+      <p class="lede">Building a separate model for every embodiment multiplies the cost and splits the data. WorldGPT takes two steps instead.</p>
+    </div>
+    <div class="t-steps">
+      <div class="t-step"><h3><small>01</small>Learn together</h3><p>Actions can’t be shared across embodiments: a steering angle means nothing to a robot arm, and a joint angle means nothing to a drone. Pixels can. Every embodiment sees the world through a camera, so pixels are the bridge between them. WorldGPT learns from all of them in that shared pixel space, so each embodiment’s data also teaches the others. That makes far better use of the data than separate models can, and what WorldGPT learns on the road, in the air and on the water carries over to the rest.</p></div>
+      <div class="t-step"><h3><small>02</small>Distill to each</h3><p>The teacher stays in the cloud and is built to be distilled into a smaller on-device student for each embodiment. A new embodiment adds its data to the teacher instead of starting a new stack.</p></div>
+    </div>
+    <div class="tree" role="img" aria-label="One WorldGPT teacher in the cloud learns from every embodiment and is distilled into an on-device student for each">
+      <div class="t-root"><small>Teacher · in the cloud</small><div class="wm-lock"><b class="wordmark"><span class="w1">World</span><span class="w2">GPT</span></b><i class="wm-bar" aria-hidden="true"></i></div><span>One model, every embodiment and task</span></div>
+      <div class="t-stem" aria-hidden="true"><span class="up">Learns from each ↑</span><span>↓ Distilled into each</span></div>
+      <div class="t-kids" id="t-kids" aria-hidden="true"></div>
+    </div>
+  </div>
 </section>
-<section class="wrap wide" id="results">
-<p class="eyebrow">Results</p>
-<h2>Results</h2>
-<div class="placeholder">Coming soon</div>
+
+<section class="block" id="benchmarks" aria-labelledby="bm-h">
+  <div class="wrap wide">
+    <div class="head">
+      <p class="label">Benchmarks</p>
+      <h2 id="bm-h">Unified, not diluted.<br><span class="dim">In driving, manipulation, visual understanding and video generation.</span></h2>
+    </div>
+    <div class="bm-top"><b id="bm-n">0</b><span>first places on public benchmarks</span></div>
+    <p class="bm-asof">As of 31 October 2026. ↑ higher is better, ↓ lower is better; our row is highlighted.</p>
+    <div class="areas" id="areas"></div>
+    <p class="fine" id="fine"></p>
+  </div>
 </section>
-<section class="wrap" id="bibtex">
-<p class="eyebrow">Citation</p>
-<h2>BibTeX</h2>
-<div class="placeholder">Coming soon</div>
+
+<section class="block" id="capabilities" aria-labelledby="cap-h">
+  <div class="wrap wide">
+    <div class="head">
+      <p class="label">Capabilities</p>
+      <h2 id="cap-h">Perceive. Reason. Imagine. Act.<br><span class="dim">In one model.</span></h2>
+      <p class="lede">Physical AI is usually built as a pipeline: one model to see, one to reason, a simulator to predict and a policy to act, each built for a single embodiment. WorldGPT replaces the pipeline with one model, across six embodiments.</p>
+    </div>
+    <div class="abilities">
+      <article class="ab" id="ab-perceive">
+        <figure class="ab-media"><video src="media/ab2_see.mp4" muted playsinline loop preload="metadata" data-auto aria-label="An imagined street, then its depth and instance segmentation, from a car"></video></figure>
+        <h3><i style="--c:var(--m-depth)"></i>Perceive</h3>
+        <p>Depth, segmentation and masks for objects you name, on every camera, for the frames it sees and the future it imagines.</p>
+      </article>
+      <article class="ab" id="ab-reason">
+        <figure class="ab-media"><img src="media/ab2_reason.jpg" alt="Drone facing a tree with a white-painted trunk" loading="lazy"><figcaption><small>Reasoning</small>“The middle tree is right in front of me, trunk centered in the view. My job is to get past it on the right side.”</figcaption></figure>
+        <h3><i style="--c:var(--m-reason)"></i>Reason</h3>
+        <p>Explains itself: answers questions about the scene and gives the reason behind its decisions, in plain language.</p>
+      </article>
+      <article class="ab" id="ab-imagine">
+        <figure class="ab-media"><video src="media/ab2_imagine.mp4" muted playsinline loop preload="metadata" data-auto aria-label="Imagined highway, front camera over the four surround cameras"></video></figure>
+        <h3><i style="--c:var(--m-rgb)"></i>Imagine</h3>
+        <p>Predicts what happens next: seconds of multi-camera video, consistent across views, from about one second of real input. Change the instruction and the future changes.</p>
+      </article>
+      <article class="ab" id="ab-act">
+        <figure class="ab-media"><video src="media/ab2_act.mp4" muted playsinline loop preload="metadata" data-auto aria-label="Imagined humanoid hand lifting a bottle to pour"></video></figure>
+        <h3><i style="--c:var(--m-act)"></i>Act</h3>
+        <p>Trajectories for cars, actions for arms and hands, motion for drones and boats, all from the same model.</p>
+      </article>
+    </div>
+  </div>
 </section>
-</main>
-<footer class="wrap">
-<p>WorldGPT project page</p>
+
+<section class="block" id="demos" aria-labelledby="demo-h">
+  <div class="wrap wide">
+    <div class="head">
+      <p class="label">Demos</p>
+      <h2 id="demo-h">Everything after the first second<br><span class="dim">is imagined.</span></h2>
+      <p class="lede">The six clips from the cross-embodiment grid, and <span class="n-more">32</span> more, one at a time. Each starts from about one second of real camera input, and the rest is WorldGPT's own prediction. On the road, in the air and on the water it pauses to reason about the scene, and most clips also show its depth and segmentation. Drag the divider to compare with what really happened.</p>
+    </div>
+    <div class="seg-row"><div class="seg" role="tablist" aria-label="Embodiments" id="tabs"></div></div>
+    <div class="pager" id="pager" role="group" aria-label="Clips for this embodiment">
+      <button type="button" class="pg-arrow" id="pg-prev" aria-label="Previous clip"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+      <div class="pg-nums" id="clips"></div>
+      <button type="button" class="pg-arrow" id="pg-next" aria-label="Next clip"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+    </div>
+    <div class="player" id="player" role="tabpanel">
+      <div class="stage" id="stage">
+        <video id="v-real" muted playsinline loop preload="metadata" aria-hidden="true" tabindex="-1"></video>
+        <video id="v-sim" muted playsinline loop preload="metadata"></video>
+        <div class="divider" aria-hidden="true"></div>
+        <span class="tag tag-l">WorldGPT</span><span class="tag tag-r">Real recording</span>
+        <input class="split" id="split" type="range" min="0" max="100" value="50" aria-label="Divider between the WorldGPT prediction and the real recording">
+      </div>
+      <div class="scrub">
+        <button class="pp" id="pp" type="button" aria-label="Play"></button>
+        <div class="track" id="track"><div class="bars" id="bars"></div><div class="labels" id="labels" aria-hidden="true"></div></div>
+        <span class="time" id="time">0.0 s</span>
+      </div>
+      <p class="now" id="now" aria-hidden="true"><i></i><span></span></p>
+      <div class="info" id="info" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="instructions" aria-labelledby="cf-h">
+  <div class="wrap wide">
+    <div class="head">
+      <p class="label">Controllable futures</p>
+      <h2 id="cf-h">Change the instruction.<br><span class="dim">Change the future.</span></h2>
+      <p class="lede">A world model is only useful for planning if its futures respond to what you ask. In each example, every future starts from the same real second with the same random seed; only the instruction is different. WorldGPT follows each one, and explains its plan.</p>
+    </div>
+    <div class="seg-row"><div class="cf-pick" role="tablist" aria-label="Counterfactual examples" id="cf-pick"></div></div>
+    <div class="cf-grid" id="cf-grid"></div>
+    <div class="cf-paths">
+      <video id="cf-p" muted playsinline loop preload="metadata" aria-label="Top-down paths of every rollout in this example"></video>
+      <div class="cf-key" id="cf-key"></div>
+    </div>
+  </div>
+</section>
+
+<section class="block closing" id="closing" aria-labelledby="end-h">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="end-h">One world action model<br><span class="dim">for everything that moves.</span></h2>
+      <p class="lede">Technical report coming soon.</p>
+    </div>
+    <div class="credits">
+      <div class="cr-block">
+        <p class="label">Authors</p>
+        <p class="authors" id="authors"></p>
+        <p class="note" id="authors-note" hidden></p>
+      </div>
+      <div class="cr-block">
+        <div class="cr-head"><p class="label">Citation</p><button type="button" class="copy" id="bib-copy">Copy</button></div>
+        <pre class="bib" id="bib" tabindex="0"></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="brand wordmark"><span class="w1">World</span><span class="w2">GPT</span></span>
+    <span>© 2026 XPENG</span>
+  </div>
 </footer>
+
+
+<script src="content.js"></script>
+<script>
+(function(){
+  var MEDIA='media/';
+  var KIND={
+    in:  ['Real input',   'var(--m-in)', 'Input'],
+    img: ['Imagined',     'var(--m-rgb)'],
+    rsn: ['Reasoning',    'var(--m-reason)'],
+    dep: ['Depth',        'var(--m-depth)'],
+    sem: ['Segmentation', 'var(--m-sem)'],
+    clip:['Question, then prediction','var(--m-rgb)']
+  };
+  var G=window.WG,TABS=G.TABS,DEMOS=G.DEMOS,WALL=G.WALL,COV=G.COV,AREAS=G.AREAS,FINE=G.FINE,GRID=G.GRID,AUTHORS=G.AUTHORS,BIBTEX=G.BIBTEX;
+
+  var REDUCED=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function el(tag,attrs,html){var e=document.createElement(tag);if(attrs)for(var k in attrs)e.setAttribute(k,attrs[k]);if(html!=null)e.innerHTML=html;return e;}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function play(v){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+  // streamed reasoning: each word in its own span, shown in turn from the start of the reasoning pause, about 80 words a
+  // second (close to how fast a current model streams; user 11-03: 40 felt slower than Claude); reduced motion shows the
+  // whole text at once
+  var WPS=REDUCED?Infinity:80;
+  function words(text){return esc(text).split(/(\s+)/).map(function(w){return !w||/^\s+$/.test(w)?w:'<span class="w">'+w+'</span>';}).join('');}
+  function streamShow(items,e,end){
+    var lastOn=null;
+    items.forEach(function(it){var on=e>=it[1];it[0].classList.toggle('shown',on);it[0].classList.remove('caret');if(on&&it[0].classList.contains('w'))lastOn=it[0];});
+    if(lastOn&&e>=0&&e<end)lastOn.classList.add('caret');
+  }
+
+  var nav=document.getElementById('nav');
+  function navState(){nav.classList.toggle('solid',window.scrollY>40);}
+  window.addEventListener('scroll',navState,{passive:true});navState();
+
+  // the nav marks the part of the page in view. Each link owns its section; the counterfactual belongs to Demos;
+  // the overview, the capabilities and the closing light nothing. A section counts once its top passes 35% of the window.
+  var SPY=[['overview',null],['unified','unified'],['teacher','teacher'],['benchmarks','benchmarks'],['capabilities',null],
+           ['demos','demos'],['instructions','demos'],['closing',null]];
+  var navLinks={};Array.prototype.forEach.call(nav.querySelectorAll('ul a'),function(a){navLinks[a.getAttribute('href').slice(1)]=a;});
+  var spyOn=null,spyRaf=0;
+  function spy(){
+    spyRaf=0;var line=nav.offsetHeight+window.innerHeight*.35,best=null,bestTop=-Infinity;
+    SPY.forEach(function(s){var e=document.getElementById(s[0]);if(!e)return;var r=e.getBoundingClientRect();
+      if(!r.height&&!r.width)return;if(r.top<=line&&r.top>bestTop){bestTop=r.top;best=s[1];}});
+    if(best===spyOn)return;
+    if(spyOn&&navLinks[spyOn])navLinks[spyOn].removeAttribute('aria-current');
+    if(best&&navLinks[best])navLinks[best].setAttribute('aria-current','true');
+    spyOn=best;
+  }
+  function spySoon(){if(!spyRaf)spyRaf=requestAnimationFrame(spy);}
+  window.addEventListener('scroll',spySoon,{passive:true});window.addEventListener('resize',spySoon);
+
+  var wall=document.getElementById('wall');
+  var wallLabels=document.getElementById('wall-labels');
+  // the six loops are the same length; each starts at a different point, so they never restart together
+  WALL.forEach(function(w,i){
+    var f=el('figure',null,'<video muted playsinline loop preload="metadata" src="'+MEDIA+w[0]+'.mp4" data-auto></video>');
+    var v=f.querySelector('video');v.addEventListener('loadedmetadata',function(){if(v.duration)v.currentTime=v.duration*i/WALL.length;},{once:true});
+    wall.appendChild(f);
+    wallLabels.appendChild(el('span',null,esc(w[1])));
+  });
+
+  // cross-embodiment grid: every tile plays when the grid scrolls into view (data-auto)
+  var grid6=document.getElementById('grid6');
+  // a tile whose clip is also a demo carries that demo's timeline: a phase chip that follows the video, and the model's own
+  // reasoning (GRID tile [2], a quote from the demo's answer) once the reasoning pause starts
+  GRID.tiles.forEach(function(t){
+    var f=el('figure',{'class':'g-tile',role:'button',tabindex:'0','aria-label':t[1]+': open its demo'},'<video muted playsinline loop preload="metadata" src="'+MEDIA+t[0]+'.mp4" data-auto aria-hidden="true"></video><figcaption>'+esc(t[1])+'</figcaption>');
+    grid6.appendChild(f);
+    var d=DEMOS.filter(function(x){return x.id===t[0];})[0];
+    // selecting a tile opens the same clip in the demo player below, next to the real recording
+    function openDemo(){selectTab(t[3],true);if(d)select(d,true);document.getElementById('demos').scrollIntoView({behavior:REDUCED?'auto':'smooth'});}
+    f.addEventListener('click',openDemo);
+    f.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();openDemo();}});
+    if(!d)return;
+    var chip=el('span',{'class':'g-phase','aria-hidden':'true'},'<i></i><span></span>');f.appendChild(chip);
+    var say=null,rsn=d.seg.filter(function(x){return x[0]==='rsn';})[0];
+    var sayItems=[];
+    if(t[2]&&rsn){say=el('p',{'class':'g-say'},'<b>Reasoning</b>'+words('“'+t[2]+'”'));f.appendChild(say);
+      sayItems=Array.prototype.map.call(say.querySelectorAll('.w'),function(w,i){return [w,i/WPS];});}
+    var v=f.querySelector('video'),last='';
+    function upd(){
+      var tt=v.currentTime,k=d.seg[0][0];
+      d.seg.forEach(function(x){if(tt>=x[1])k=x[0];});
+      if(k!==last){chip.style.setProperty('--c',KIND[k][1]);chip.lastChild.textContent=KIND[k][0];last=k;}
+      if(say){say.classList.toggle('on',tt>=rsn[1]);streamShow(sayItems,tt-rsn[1],sayItems.length/WPS);}
+    }
+    v.addEventListener('timeupdate',upd);upd();
+  });
+  if(GRID.placeholder){var gn=document.getElementById('grid-note');gn.textContent=GRID.placeholder;gn.hidden=false;}
+  var tkids=document.getElementById('t-kids');
+  // a mouse over a thumbnail plays its clip (made on the first hover); touch screens and reduced motion keep the still
+  var HOVER=!REDUCED&&window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches;
+  COV.forEach(function(r){
+    var t=GRID.tiles.filter(function(x){return x[3]===r[1];})[0];
+    var k=el('div',{'class':'t-kid'},'<span class="t-stu"><b>Student</b><small>on-device</small></span>'+(t?'<figure><img src="'+MEDIA+t[0]+'.jpg" alt="" loading="lazy"></figure>':'')+'<b>'+esc(r[0])+'</b>');
+    tkids.appendChild(k);
+    var fig=k.querySelector('figure');if(!fig||!HOVER)return;var v=null;
+    fig.addEventListener('mouseenter',function(){
+      if(!v){v=el('video',{muted:'',playsinline:'',loop:'',preload:'auto','aria-hidden':'true'});v.muted=true;v.src=MEDIA+t[0]+'.mp4';fig.appendChild(v);}
+      fig.classList.add('on');play(v);
+    });
+    fig.addEventListener('mouseleave',function(){fig.classList.remove('on');if(v)v.pause();});
+  });
+
+  // Safety net for unusual viewport shapes: hide a label that would touch the hero text.
+  var hero=document.getElementById('top');
+  function checkLabels(){
+    var avoid=[];
+    Array.prototype.forEach.call(document.querySelectorAll('.hero-inner > *'),function(e){var r=e.getBoundingClientRect();if(r.width)avoid.push([r.left-10,r.top-10,r.right+10,r.bottom+10]);});
+    Array.prototype.forEach.call(wallLabels.children,function(sp){
+      sp.classList.remove('hide');var r=sp.getBoundingClientRect();
+      var hit=avoid.some(function(a){return r.left<a[2]&&r.right>a[0]&&r.top<a[3]&&r.bottom>a[1];});
+      sp.classList.toggle('hide',hit);
+    });
+  }
+  var chkT=0;function checkSoon(){clearTimeout(chkT);chkT=setTimeout(checkLabels,60);}
+  window.addEventListener('resize',checkSoon);
+  if('ResizeObserver' in window){var ro=new ResizeObserver(checkSoon);ro.observe(hero);ro.observe(document.querySelector('.hero-inner'));}
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(checkSoon);
+  checkSoon();
+
+
+  var stage=document.getElementById('stage'),vs=document.getElementById('v-sim'),vr=document.getElementById('v-real');
+  var player=document.getElementById('player'),SIDE=window.matchMedia&&matchMedia('(min-width:1100px)');
+  // square and 4:3 clips on wide windows: clip on the left, its text on the right (2:1 car clips keep text below)
+  function layoutPlayer(){if(!cur)return;var ar=cur.w/cur.h;player.style.setProperty('--ar',ar.toFixed(4));
+    player.classList.toggle('side',!!(SIDE&&SIDE.matches)&&ar<=1.34);if(labels)fitLabels();}
+  if(SIDE){if(SIDE.addEventListener)SIDE.addEventListener('change',layoutPlayer);else if(SIDE.addListener)SIDE.addListener(layoutPlayer);}
+  var split=document.getElementById('split'),bars=document.getElementById('bars'),labels=document.getElementById('labels'),track=document.getElementById('track');
+  var pp=document.getElementById('pp'),timeEl=document.getElementById('time'),info=document.getElementById('info'),clips=document.getElementById('clips');
+  var nowEl=document.getElementById('now'),tabsEl=document.getElementById('tabs');
+  var cur=null,segEls=[],dot=null,raf=0,inView=false;
+  var ICON_PLAY='<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9-5.5z"/></svg>';
+  var ICON_PAUSE='<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 1.5h3v11h-3zM8.5 1.5h3v11h-3z"/></svg>';
+  pp.innerHTML=ICON_PLAY;
+  function setSplit(v){stage.style.setProperty('--split',v+'%');}
+  split.addEventListener('input',function(){setSplit(split.value);});setSplit(50);
+  function total(d){var last=d.seg[d.seg.length-1][2];return(vs.duration&&isFinite(vs.duration))?vs.duration:last;}
+  function sync(){if(!cur||!cur.gt)return;if(Math.abs(vr.currentTime-vs.currentTime)>0.12)vr.currentTime=vs.currentTime;}
+  vs.addEventListener('play',function(){sync();if(cur&&cur.gt)play(vr);pp.innerHTML=ICON_PAUSE;pp.setAttribute('aria-label','Pause');loop();});
+  vs.addEventListener('pause',function(){vr.pause();sync();pp.innerHTML=ICON_PLAY;pp.setAttribute('aria-label','Play');});
+  vs.addEventListener('seeked',sync);
+  vs.addEventListener('loadedmetadata',function(){drawTimeline();tick();});
+  pp.addEventListener('click',function(){if(vs.paused)play(vs);else vs.pause();});
+  function loop(){cancelAnimationFrame(raf);var f=function(){tick();if(!vs.paused)raf=requestAnimationFrame(f);};raf=requestAnimationFrame(f);}
+  function drawTimeline(){
+    bars.innerHTML='';labels.innerHTML='';segEls=[];var T=total(cur);
+    cur.seg.forEach(function(s,i){
+      var end=(i===cur.seg.length-1)?T:s[2],grow=Math.max(end-s[1],0.01)+' 1 0';
+      var b=el('button',{type:'button','aria-label':KIND[s[0]][0]+', from '+s[1].toFixed(1)+' s'});
+      b.style.flex=grow;b.style.setProperty('--c',KIND[s[0]][1]);
+      b.addEventListener('click',function(){vs.currentTime=s[1]+0.05;sync();tick();});
+      var l=el('span',{title:KIND[s[0]][0]},KIND[s[0]][2]||KIND[s[0]][0]);l.style.flex=grow;
+      bars.appendChild(b);labels.appendChild(l);segEls.push([b,l,s]);
+    });
+    if(!dot){dot=el('span',{'class':'head-dot','aria-hidden':'true'});track.appendChild(dot);}
+    fitLabels();
+  }
+  function fitLabels(){
+    player.classList.remove('lbl-tight','lbl-none');
+    if(!labels.offsetParent)return;
+    function over(){return Array.prototype.some.call(labels.children,function(x){return x.scrollWidth>x.clientWidth+1;});}
+    if(over()){player.classList.add('lbl-tight');if(over())player.classList.add('lbl-none');}
+  }
+  var fitT=0;window.addEventListener('resize',function(){clearTimeout(fitT);fitT=setTimeout(fitLabels,80);});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitLabels);
+  function tick(){
+    if(!cur||!dot)return;
+    var t=vs.currentTime||0,T=total(cur),kind=null;
+    dot.style.left=(Math.min(t/T,1)*100)+'%';
+    timeEl.textContent=t.toFixed(1)+' s';
+    segEls.forEach(function(x,i){var s=x[2],on=t>=s[1]&&(t<s[2]||i===segEls.length-1);x[0].classList.toggle('on',on);x[1].classList.toggle('on',on);if(on)kind=s[0];});
+    var qa=info.querySelector('.qa');if(qa)qa.classList.toggle('live',kind==='rsn');
+    // the reasoning is written from the start of the pause and stays to the end of the clip; the decision follows once it
+    // is written; each loop, or a seek back before the pause, starts empty again, as in the composed review reels
+    if(stream){var e=t-stream.from+0.05;
+      if(qa)qa.classList.toggle('wait',e<0);
+      streamShow(stream.items,e,stream.end);
+      var ch=info.querySelector('.chip.gated');if(ch)ch.classList.toggle('wait',e<stream.end);}
+    if(kind){nowEl.style.setProperty('--c',KIND[kind][1]);nowEl.lastChild.textContent=KIND[kind][0];}
+    if(cur.gt&&!vs.paused)sync();
+  }
+  var stream=null;
+  function renderInfo(d){
+    var rsn=d.seg.filter(function(x){return x[0]==='rsn';})[0];
+    var main='<div class="info-main"><p class="label">'+esc(d.sub)+'</p><h3>'+esc(d.t)+'</h3>';
+    if(d.task)main+='<p class="ins"><b>Instruction</b>'+esc(d.task)+'</p>';
+    if(d.dec)main+='<span class="chip'+(rsn?' gated wait':'')+'">Decision · '+esc(d.dec)+'</span>';
+    if(d.desc)main+='<p class="desc">'+esc(d.desc)+'</p>';
+    if(d.plan)main+='<div class="ins"><b>Remaining plan</b><ol class="plan">'+d.plan.map(function(x){return'<li>'+esc(x)+'</li>';}).join('')+'</ol></div>';
+    main+='</div>';
+    var side=d.qa?'<div class="qa'+(rsn?' gated wait':'')+'"><p class="lbl"><i></i>The model’s reasoning</p>'+
+      (rsn?'<p class="qa-hold">Shows up here when the model stops to reason about the scene.</p>':'')+d.qa.map(function(x){return'<div><p class="q">'+esc(x[0])+'</p><p class="a">'+(rsn?words(x[1]):esc(x[1]))+'</p></div>';}).join('')+'</div>':'<div></div>';
+    info.innerHTML=main+side;
+    // the question appears, a beat, then its answer is written word by word; then the next question
+    stream=null;var qa=info.querySelector('.qa.gated');
+    if(qa){var items=[],at=0;
+      Array.prototype.forEach.call(qa.children,function(p){if(p.tagName!=='DIV')return;
+        items.push([p.querySelector('.q'),at]);at+=WPS===Infinity?0:0.25;
+        Array.prototype.forEach.call(p.querySelectorAll('.w'),function(w){items.push([w,at]);at+=1/WPS;});
+        at+=WPS===Infinity?0:0.3;});
+      stream={from:rsn[1],items:items,end:at};}
+  }
+  function select(d,autoplay){
+    cur=d;
+    stage.classList.toggle('solo',!d.gt);
+    stage.style.aspectRatio=d.w+' / '+d.h;
+    stage.style.maxWidth='min(100%, calc(min(74vh, 1000px) * '+(d.w/d.h).toFixed(4)+'))';
+    layoutPlayer();
+    // a new clip starts at 0, so the previous clip's position cannot reveal this one's reasoning early
+    vs.poster=MEDIA+d.id+'.jpg';vs.src=MEDIA+d.id+'.mp4';vs.currentTime=0;
+    if(d.gt){vr.src=MEDIA+d.id+'_gt.mp4';}else{vr.removeAttribute('src');vr.load();}
+    drawTimeline();renderInfo(d);tick();
+    Array.prototype.forEach.call(clips.children,function(b){b.setAttribute('aria-pressed',b._d===d?'true':'false');});
+    pp.innerHTML=ICON_PLAY;pp.setAttribute('aria-label','Play');
+    if(autoplay&&!REDUCED)play(vs);
+  }
+  var pager=document.getElementById('pager'),curList=[];
+  function step(k){if(curList.length<2)return;var i=curList.indexOf(cur);select(curList[(i+k+curList.length)%curList.length],true);}
+  document.getElementById('pg-prev').addEventListener('click',function(){step(-1);});
+  document.getElementById('pg-next').addEventListener('click',function(){step(1);});
+  function selectTab(k,autoplay){
+    Array.prototype.forEach.call(tabsEl.children,function(b){var on=b._k===k;b.setAttribute('aria-selected',on?'true':'false');b.tabIndex=on?0:-1;});
+    clips.innerHTML='';
+    var list=DEMOS.filter(function(d){return d.tab===k;});
+    list.forEach(function(d,i){
+      var b=el('button',{type:'button','aria-label':(i+1)+'. '+d.t,title:d.t},String(i+1));b._d=d;
+      b.addEventListener('click',function(){select(d,true);});
+      clips.appendChild(b);
+    });
+    curList=list;pager.classList.toggle('single',list.length<2);
+    select(list[0],autoplay||inView);
+    centerTab();
+  }
+  function centerTab(){
+    var b=tabsEl.querySelector('[aria-selected="true"]');if(!b||tabsEl.scrollWidth<=tabsEl.clientWidth+1)return;
+    var r=b.getBoundingClientRect(),q=tabsEl.getBoundingClientRect();tabsEl.scrollLeft+=(r.left+r.width/2)-(q.left+q.width/2);
+  }
+  window.addEventListener('resize',centerTab);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(centerTab);
+  TABS.forEach(function(t,i){
+    var b=el('button',{type:'button',role:'tab','aria-controls':'player',id:'tab-'+t.k},esc(t.t));b._k=t.k;
+    b.addEventListener('click',function(){selectTab(t.k,true);});
+    b.addEventListener('keydown',function(ev){
+      var L=TABS.length,j=ev.key==='ArrowRight'?(i+1)%L:ev.key==='ArrowLeft'?(i-1+L)%L:-1;
+      if(j<0)return;ev.preventDefault();selectTab(TABS[j].k,true);tabsEl.children[j].focus();
+    });
+    tabsEl.appendChild(b);
+  });
+  selectTab('drone',false);
+
+  // controllable futures: one example at a time, the original instruction first, then one or two changes
+  /* cf-data */
+  var CF=[
+   {
+    "id": "air_hydrant",
+    "g": "Drone",
+    "k": "Fire hydrant",
+    "who": "Drone",
+    "rec": "flight",
+    "w": 512,
+    "h": 512,
+    "gt": 5.6,
+    "note": "At their widest, the changed paths are 4.3 m and 9.1 m from the original one.",
+    "orig": {
+     "ins": "Progress through the fire hydrant from the left side",
+     "ans": "The hydrant is right in front of me now, close and centered in the view. My job is to get past it on its left side. The road on the left is open, with no branches or poles in the way, so there is a clear lane there."
+    },
+    "changes": [
+     {
+      "ins": "Progress through the fire hydrant from the right side",
+      "ans": "The hydrant is right in front of me now, close, sitting a touch left of center. My job is to get past it on its right side, so I want it staying on my left as I go by. The grass to the right of it is open, no branches or poles in the way."
+     },
+     {
+      "ins": "Back off from the fire hydrant",
+      "ans": "The red fire hydrant is right in front of me, close and centered in the view. My task is to back away from it. There is a lamp post just behind the hydrant and trees off to the right, so I don't want to drift sideways into them."
+     }
+    ]
+   },
+   {
+    "id": "air_lamp",
+    "g": "Drone",
+    "k": "Streetlight",
+    "who": "Drone",
+    "rec": "flight",
+    "w": 512,
+    "h": 512,
+    "gt": 5.6,
+    "note": "At their widest, the two predicted paths are 8.3 m apart.",
+    "orig": {
+     "ins": "Go past the streetlight from the left side",
+     "ans": "The streetlight pole is right beside me on the right of the view, and it looks close. My job is to get past it on its left side, so I want to keep it on my right and not drift toward it. Ahead of me the lawn is open, with trees and the white building further off and nothing blocking the line."
+    },
+    "changes": [
+     {
+      "ins": "Navigate to the tree on the right side",
+      "ans": "I'm hovering over the grass with a tall pole right in front of me, very close. The tree I was told to head for is the round one on the right, past the hedge. The pole sits just left of my line, so I can slip past it on the right."
+     }
+    ]
+   },
+   {
+    "id": "air_bike",
+    "g": "Drone",
+    "k": "Bicycle",
+    "who": "Drone",
+    "rec": "flight",
+    "w": 512,
+    "h": 512,
+    "gt": 5.6,
+    "note": "Circling, the drone turns 67° to keep the bicycle in view; told to pass it, it turns 29° and flies on past it.",
+    "orig": {
+     "ins": "Navigate around the bicycle in counterclockwise direction",
+     "ans": "The bike is right in front of me, standing on the grass with the red track off to my left. My job is to circle it counterclockwise, so I keep it pinned in the middle of my view. I slide across to the right and let the nose swing back left so the bike stays centered."
+    },
+    "changes": [
+     {
+      "ins": "Go past the bicycle from the right side",
+      "ans": "The bike is right in front of me, a bit left of center, standing on the grass. My job is to get past it on its right side. The grass to the right of the bike is wide open, no poles or branches in the way."
+     }
+    ]
+   },
+   {
+    "id": "air_trees",
+    "g": "Drone",
+    "k": "Two trees",
+    "who": "Drone",
+    "rec": "flight",
+    "w": 512,
+    "h": 512,
+    "gt": 5.6,
+    "note": "At their widest, the two predicted paths are 18.7 m apart.",
+    "orig": {
+     "ins": "Make way through the middle tree from the right side",
+     "ans": "The middle tree is right in front of me now, its trunk filling the center of the view. My job is to get past it on the right side. The trunk sits a touch left of my line, and the grass on its right is open, so I have room."
+    },
+    "changes": [
+     {
+      "ins": "Back off from the middle tree",
+      "ans": "The middle tree is right in front of me, trunk filling the center of the view, and it is close. My task is to back away from it. The road and grass sit below and the other trees are off to the sides, so the clean move is straight back."
+     }
+    ]
+   },
+   {
+    "id": "air_building",
+    "g": "Drone",
+    "k": "Building",
+    "who": "Drone",
+    "rec": "flight",
+    "w": 512,
+    "h": 512,
+    "gt": 5.6,
+    "note": "At their widest, the two predicted paths are 20.1 m apart.",
+    "orig": {
+     "ins": "Navigate to the building from the left side",
+     "ans": "I'm right up next to the blue building, and its wall is close on my right. The task is to get to the building from the left side, so I need to work my way around this corner. I'll slide across to the left and keep my heading steady, so the wall stays in view and I don't drift into it."
+    },
+    "changes": [
+     {
+      "ins": "Back off from the building",
+      "ans": "I'm right up next to a building, and its blue face fills the right side of my view. There's a white column just ahead of me too, so I don't want to drift forward or sideways into it. The task is to back off from the building, so I'm easing straight backward while keeping my heading steady."
+     }
+    ]
+   },
+   {
+    "id": "harbor_unloader",
+    "g": "Harbor boat",
+    "k": "Unloader",
+    "who": "Boat",
+    "rec": "course",
+    "w": 960,
+    "h": 528,
+    "gt": 5.6,
+    "note": "Over the rollout the bow turns 46° left under the original instruction, turns 28° right when told “Turn right”, and keeps its heading (within 8°) when told “Go straight”.",
+    "orig": {
+     "ins": "Turn left",
+     "ans": "I'm on open water with a long industrial plant running along the far shore, its cranes and pylons stretching across the horizon. The shoreline ahead is distant, but the whole bank runs parallel to my course, so the safe line is to bring the bow around to the left and follow it."
+    },
+    "changes": [
+     {
+      "ins": "Turn right",
+      "ans": "I'm on open water with a long industrial pier stretching across ahead of me, cranes and pylons along it. The clear water lies off to my right, so I'm swinging the bow that way to run along the face of the works rather than straight at them."
+     },
+     {
+      "ins": "Go straight",
+      "ans": "The water ahead of me is wide open, with nothing in my path — no buoys, no boats, no shallows to worry about. The industrial shore with its long conveyor belt runs parallel to my course off to one side, and I am holding a steady line well clear of it."
+     }
+    ]
+   },
+   {
+    "id": "harbor_ship",
+    "g": "Harbor boat",
+    "k": "Moored ship",
+    "who": "Boat",
+    "rec": "course",
+    "w": 960,
+    "h": 528,
+    "gt": 5.6,
+    "note": "Over the rollout the bow turns 15° right under the original instruction and turns 15° left when told “Turn left”.",
+    "orig": {
+     "ins": "Turn right",
+     "ans": "I'm in a wide harbor with a large blue-and-white ship close on my right and a long white vessel lying along the left bank. The clear water is ahead and to my right, so I'm swinging the bow that way to stay in the open reach."
+    },
+    "changes": [
+     {
+      "ins": "Turn left",
+      "ans": "I'm on a wide reach with the port shore running along my left and a line of buildings and a small white boat ahead of me. The instruction is to turn left, so I'm swinging the bow toward the open water on my port side, keeping the turn smooth so I don't close the bank or the boat ahead."
+     }
+    ]
+   },
+   {
+    "id": "canoe_lake",
+    "g": "Canoe",
+    "k": "Open lake",
+    "who": "Canoe",
+    "rec": "course",
+    "w": 960,
+    "h": 528,
+    "gt": 5.6,
+    "note": "Over the rollout the bow makes a U-turn to the left (185°) under the original instruction, turns 122° right when told “Turn right”, and keeps its heading (within 8°) when told “Go straight”.",
+    "orig": {
+     "ins": "Turn left",
+     "ans": "The tree-lined shore is filling the view ahead and running away to my right, so I don't want to keep pointing at it. The water opens up cleanly to my left, with no buoys, boats, or shallows in sight. I'm swinging the bow around to port, bringing it onto that open stretch."
+    },
+    "changes": [
+     {
+      "ins": "Turn right",
+      "ans": "The wooded shoreline is running close along my port side and the treeline ahead is bending away to the left, so I don't want to keep pointing straight at it. To starboard the water opens up wide and clear, with no buoys, boats, or shallows in sight. I'll swing the bow toward that open water and let the view pan across as the boat comes around."
+     },
+     {
+      "ins": "Go straight",
+      "ans": "The water ahead of me is wide open, with nothing in my path — no buoys, no boats, no shallows showing. The forested shoreline runs along my left at a comfortable distance, and the right side opens up as well. There is no reason to change anything here."
+     }
+    ]
+   },
+   {
+    "id": "canoe_granite",
+    "g": "Canoe",
+    "k": "Granite point",
+    "who": "Canoe",
+    "rec": "course",
+    "w": 960,
+    "h": 528,
+    "gt": 5.6,
+    "note": "Over the rollout the bow turns 32° left under the original instruction, turns 22° right when told “Turn right”, and keeps its heading (within 8°) when told “Go straight”.",
+    "orig": {
+     "ins": "Turn left",
+     "ans": "The water ahead is wide and clear, and the reach opens toward my left between the rocky point on the port side and the far tree line. I'm swinging the bow left toward that open stretch, keeping a comfortable margin off the point as I come around."
+    },
+    "changes": [
+     {
+      "ins": "Turn right",
+      "ans": "The lake is wide open ahead of me, with a wooded point running out on my port side and the far tree line off to starboard. The clear water I want is the open reach to my right, so I'm swinging the bow that way, away from the point."
+     },
+     {
+      "ins": "Go straight",
+      "ans": "The water ahead of me is wide open, with nothing between the bow and the far treeline. The rocky point on my left and the wooded shore on my right are both well clear, so there is no reason to change anything."
+     }
+    ]
+   },
+   {
+    "id": "canoe_dusk",
+    "g": "Canoe",
+    "k": "Sunset",
+    "who": "Canoe",
+    "rec": "course",
+    "w": 960,
+    "h": 528,
+    "gt": 5.6,
+    "note": "Over the rollout the bow keeps its heading (within 8°) under the original instruction and turns 54° right when told “Turn right”.",
+    "orig": {
+     "ins": "Go straight",
+     "ans": "The water ahead of me is wide open, running straight between the two wooded shores, and I can see no buoys, boats, or shallows in my path. The sun is low and throwing glare off the surface, but the channel stays clear all the way to the far end. Both banks are well off to either side, so nothing is pressing me to alter course."
+    },
+    "changes": [
+     {
+      "ins": "Turn right",
+      "ans": "The waterway ahead is bending and I want to bring the bow around to the right to stay on the open reach. The right-hand shore is dark and close, so I keep the swing controlled and don't let the bow drift onto that bank. To the left the water is open too, but holding straight or easing left would carry me off the line I want."
+     }
+    ]
+   }
+  ];
+  /* /cf-data */
+  var cfPaths=document.querySelector('.cf-paths');
+  var cfPick=document.getElementById('cf-pick'),cfGrid=document.getElementById('cf-grid'),cfKey=document.getElementById('cf-key'),cpth=document.getElementById('cf-p'),cfVids=[];
+  function cfLead(){return cfVids[0];}
+  function cfFollow(){return cfVids.slice(1).concat([cpth]);}
+  function cfSelect(e,autoplay){
+    Array.prototype.forEach.call(cfPick.querySelectorAll('button'),function(b){b.setAttribute('aria-selected',b._e===e?'true':'false');b.tabIndex=b._e===e?0:-1;});
+    var cols=[{c:'var(--cf-b)',tag:'Original instruction',x:e.orig,f:'original'}].concat(e.changes.map(function(x,i){return{c:i?'var(--cf-c)':'var(--cf-a)',tag:'Changed instruction',x:x,f:i?'changed2':'changed'};}));
+    cfGrid.className='cf-grid n'+cols.length;cfGrid.style.setProperty('--n',cols.length);
+    cfPaths.className='cf-paths n'+cols.length;cfPaths.style.setProperty('--n',cols.length);cfGrid.style.setProperty('--ar',e.w+' / '+e.h);
+    cfGrid.innerHTML=cols.map(function(c){return'<div class="cf-col" style="--c:'+c.c+'"><p class="cf-ins"><small><i></i>'+c.tag+'</small>\u201c'+esc(c.x.ins)+'.\u201d</p>'+
+      '<video muted playsinline loop preload="metadata" poster="'+MEDIA+'cf_'+e.id+'.jpg" aria-label="'+esc(e.who+' rollout: '+c.x.ins)+'"></video>'+
+      (c.x.ans?'<p class="a">'+esc(c.x.ans)+'</p>':'')+'</div>';}).join('');
+    cfVids=Array.prototype.slice.call(cfGrid.querySelectorAll('video'));
+    cols.forEach(function(c,i){cfVids[i].src=MEDIA+'cf_'+e.id+'_'+c.f+'.mp4';});
+    cpth.src=MEDIA+'cf_'+e.id+'_paths.mp4';
+    cfKey.innerHTML='<strong>Seen from above</strong>'+cols.map(function(c,i){return'<span style="--c:'+c.c+'"><i></i>'+'\u201c'+esc(c.x.ins)+'\u201d'+(i?'':' (original)')+'</span>';}).join('')+
+      '<span style="--c:#ffffff"><i style="box-shadow:0 0 0 1px var(--line-2)"></i>Actual path from the recording, first '+e.gt+' s</span><p class="note">'+esc(e.note)+'</p>';
+    var m=cfLead();
+    m.addEventListener('timeupdate',function(){cfFollow().forEach(function(v){if(Math.abs(v.currentTime-m.currentTime)>0.15)v.currentTime=m.currentTime;});});
+    m.addEventListener('play',function(){cfFollow().forEach(function(v){play(v);});});
+    m.addEventListener('pause',function(){cfFollow().forEach(function(v){v.pause();});});
+    cfVids.concat([cpth]).forEach(function(v){v.addEventListener('click',function(){if(m.paused)play(m);else m.pause();});});
+    if(autoplay&&!REDUCED)play(m);
+  }
+  var cfG=null,cfBox=null;
+  CF.forEach(function(e){if(e.g!==cfG){cfG=e.g;cfBox=document.createElement('div');cfBox.className='seg cf-seg';cfBox.setAttribute('role','presentation');cfPick.appendChild(cfBox);
+      var s=document.createElement('span');s.className='cf-g';s.setAttribute('aria-hidden','true');s.textContent=e.g;cfBox.appendChild(s);}
+    var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.textContent=e.k;b._e=e;
+    b.addEventListener('click',function(){cfSelect(e,true);});cfBox.appendChild(b);});
+  cfSelect(CF[0],false);
+
+  var n=0;AREAS.forEach(function(a){(a.boards||[]).forEach(function(b){if(b.r===1)n++;});});
+  document.getElementById('bm-n').textContent=n;
+  document.getElementById('n-first').textContent=n;
+  Array.prototype.forEach.call(document.querySelectorAll('.n-first'),function(e){e.textContent=n;});
+  document.getElementById('n-first-l').textContent='first places on public benchmarks';
+  Array.prototype.forEach.call(document.querySelectorAll('.n-clips'),function(e){e.textContent=DEMOS.length;});
+  var inGrid=GRID.tiles.filter(function(t){return DEMOS.some(function(d){return d.id===t[0];});}).length;
+  Array.prototype.forEach.call(document.querySelectorAll('.n-more'),function(e){e.textContent=DEMOS.length-inGrid;});
+  // one table per benchmark: our row highlighted, the best value of each column in bold, ↑ / ↓ for the better direction
+  var NARROW=window.matchMedia&&matchMedia('(max-width:640px)');
+  // on phones the column the board is ranked by comes right after Model, so it is on screen without scrolling
+  function keyFirst(b){
+    var k=b.key||0;if(!k||!(NARROW&&NARROW.matches))return b;
+    var o=[k].concat(b.cols.map(function(c,j){return j;}).filter(function(j){return j!==k;}));
+    return {n:b.n,t:b.t,r:b.r,wide:b.wide,hw:b.hw,src:b.src,key:0,cols:o.map(function(j){return b.cols[j];}),
+      rows:b.rows.map(function(r){return [r[0],o.map(function(j){return r[1][j];}),r[2],r[3]];})};
+  }
+  function board(b){
+    b=keyFirst(b);
+    var key=b.key||0,ranked=b.rows.filter(function(r){return r[2]!==2;});
+    var best=b.cols.map(function(c,j){var v=ranked.map(function(r){return parseFloat(r[1][j]);}).filter(function(x){return!isNaN(x);});
+      return v.length?(c[1]>0?Math.max.apply(null,v):Math.min.apply(null,v)):null;});
+    var th='<th scope="col">Model</th>'+b.cols.map(function(c,j){return'<th scope="col"'+(j===key?' class="key"':'')+'>'+esc(c[0])+'\u00a0<span aria-label="'+(c[1]>0?'higher is better':'lower is better')+'">'+(c[1]>0?'↑':'↓')+'</span></th>';}).join('');
+    var tb=b.rows.map(function(r){
+      var cls=r[2]===1?' class="me"':r[2]===2?' class="ref"':'';
+      return'<tr'+cls+'><td>'+esc(r[0])+(r[3]?'<small>'+esc(r[3])+'</small>':'')+'</td>'+r[1].map(function(v,j){
+        var on=r[2]!==2&&v!==''&&(parseFloat(v)===best[j]||(r[2]===3&&j===key));
+        return'<td class="'+(j===key?'key':'')+(on?' best':'')+'">'+(v===''?'<span class="na" aria-label="not reported">–</span>':esc(v))+'</td>';}).join('')+'</tr>';}).join('');
+    return'<article class="board'+(b.wide?' wide':'')+(b.hw?' hw':'')+'" style="--g:'+(b.cols.length+2)+';--b:'+(200+60*b.cols.length)+'px"><header><h3>'+esc(b.n)+(b.r===1?'<span class="r">#1'+(b.rows.some(function(r){return r[2]===3;})?' (tied)':'')+'</span>':'')+'</h3><p>'+esc(b.t)+'</p></header>'+
+      '<div class="bt-wrap"><table class="bt"><thead><tr>'+th+'</tr></thead><tbody>'+tb+'</tbody></table></div><p class="swipe" aria-hidden="true">Swipe for more columns →</p><p class="src">'+esc(b.src)+'</p></article>';
+  }
+  var areas=document.getElementById('areas');
+  function renderAreas(){
+    areas.innerHTML='';
+    AREAS.forEach(function(a){
+      var d=el('section',{'class':'area','aria-label':a.k});
+      var h='<div class="area-h"><h3 class="label k">'+esc(a.k)+'</h3>'+(a.note?'<p class="k-note">'+esc(a.note)+'</p>':'')+'</div>';
+      h+='<div class="boards">'+(a.boards||[]).map(board).join('')+((a.pending||a.pending2)?'<div class="board pending" style="--g:3;--b:260px"><p>'+esc(a.pending||a.pending2)+'</p></div>':'')+'</div>';
+      d.innerHTML=h;areas.appendChild(d);
+    });
+    Array.prototype.forEach.call(areas.querySelectorAll('.bt-wrap'),function(w){w.addEventListener('scroll',function(){scrollState(w);},{passive:true});});
+    tablesSoon();
+  }
+  function scrollState(w){var over=w.scrollWidth>w.clientWidth+2;w.classList.toggle('scrolls',over);w.classList.toggle('end',over&&w.scrollLeft+w.clientWidth>=w.scrollWidth-2);}
+  var tblT=0;function tablesSoon(){clearTimeout(tblT);tblT=setTimeout(function(){Array.prototype.forEach.call(areas.querySelectorAll('.bt-wrap'),scrollState);},80);}
+  window.addEventListener('resize',tablesSoon);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(tablesSoon);
+  if(NARROW){if(NARROW.addEventListener)NARROW.addEventListener('change',renderAreas);else if(NARROW.addListener)NARROW.addListener(renderAreas);}
+  renderAreas();
+  document.getElementById('fine').textContent=FINE;
+
+  var au=document.getElementById('authors');
+  if(AUTHORS.names.length)au.textContent=AUTHORS.names.join(', ');else{au.textContent='Author list to be added.';au.classList.add('pending');}
+  if(AUTHORS.note){var an=document.getElementById('authors-note');an.textContent=AUTHORS.note;an.hidden=false;}
+  var bib=document.getElementById('bib'),bc=document.getElementById('bib-copy');bib.textContent=BIBTEX;
+  bc.addEventListener('click',function(){
+    function done(t){bc.textContent=t;setTimeout(function(){bc.textContent='Copy';},1600);}
+    function sel(){var r=document.createRange();r.selectNodeContents(bib);var w=window.getSelection();w.removeAllRanges();w.addRange(r);done('Selected');}
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(BIBTEX).then(function(){done('Copied');},sel);else sel();
+  });
+
+  // the title sweep is one band of light across both halves of the name: give each half the word's width
+  // and its own offset in it, then start the loop
+  var marks=document.querySelectorAll('.wordmark');
+  function glint(){
+    Array.prototype.forEach.call(marks,function(m){
+      var r=m.getBoundingClientRect();if(!r.width)return;
+      var k=m.offsetWidth/r.width;
+      m.style.setProperty('--W',m.offsetWidth.toFixed(1)+'px');
+      Array.prototype.forEach.call(m.children,function(c){c.style.setProperty('--off',((c.getBoundingClientRect().left-r.left)*k).toFixed(1)+'px');});
+      m.classList.add('glint-ready');
+    });
+  }
+  window.wgGlint=function(){glint();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(glint);};
+  window.wgGlint();
+  if('ResizeObserver' in window){var ro=new ResizeObserver(glint);Array.prototype.forEach.call(marks,function(m){ro.observe(m);});}
+
+  // Landing unfold, an option (off for now). When on, on windows at least 480 x 520 with motion allowed, the hero becomes a
+  // scroll track: the wall of six draws in from full bleed to a row of six under the title (two rows of three below 760 px,
+  // where the wall itself is two columns), the title steps up and shrinks, and the numbers (6 embodiments, 1 model, the
+  // count of first places) arrive one by one under the tiles. The overview and the cross-embodiment grid follow in their
+  // usual order. Off, phones or reduced motion: the plain hero with the numbers below it.
+  // The size test also runs on every later change: a page in a viewer's frame can start at a placeholder size and
+  // only get its real one after the script has run. Once on, it stays on; the layout follows any size.
+  var UNFOLD=false,ufMQ=window.matchMedia&&matchMedia('(min-width:480px) and (min-height:520px)'),ufOn=false;
+  function ufTry(){if(ufOn||!ufMQ.matches)return;ufOn=true;unfold();}
+  if(UNFOLD&&!REDUCED&&ufMQ){
+    ufTry();
+    if(!ufOn){if(ufMQ.addEventListener)ufMQ.addEventListener('change',ufTry);else if(ufMQ.addListener)ufMQ.addListener(ufTry);
+      window.addEventListener('resize',ufTry);}
+  }
+  function unfold(){
+    var inner=hero.querySelector('.hero-inner'),band=document.querySelector('.stats-band'),stats=band.querySelectorAll('.stat');
+    var st=el('div',{'class':'uf-stage'});
+    while(hero.firstChild)st.appendChild(hero.firstChild);
+    hero.appendChild(st);hero.classList.add('uf');st.appendChild(band);
+    var figs=Array.prototype.slice.call(wall.children),caps=[];
+    figs.forEach(function(f,i){var c=el('span',{'class':'uf-cap','aria-hidden':'true'},esc(WALL[i][1]));f.appendChild(c);caps.push(c);});
+    var L0=[],L1=[],travel=0,last=-1,capH=24,raf=0,hiY=0,hiS=1,small=false,narrow=false;
+    function sm(p,a,b){var t=Math.min(Math.max((p-a)/(b-a),0),1);return t*t*(3-2*t);}
+    function layout(){
+      var W=st.clientWidth,H=st.clientHeight,nh=nav.offsetHeight,gap=Math.round(H*.05);
+      // start: the wall as the plain hero lays it out (3 x 2, or 2 x 3 below 760 px); end: 1 x 6, or 3 x 2
+      narrow=W<760;var k0=narrow?2:3,k1=narrow?3:6,g0=2,c0=(W-(k0-1)*g0)/k0,r0=(H-(6/k0-1)*g0)/(6/k0),n1=6/k1;
+      // the title block as laid out, from its label to its buttons, measured without the transform
+      inner.style.transform='none';
+      var sr=st.getBoundingClientRect(),a=inner.firstElementChild.getBoundingClientRect(),z=inner.lastElementChild.getBoundingClientRect();
+      var bTop=a.top-sr.top,bH=z.bottom-a.top,iTop=inner.getBoundingClientRect().top-sr.top;
+      inner.style.transform='';
+      // end state: the title block just under the nav, scaled down; the row under it; the numbers under the row
+      hiS=H>=760?.74:.64;var top=nh+gap;hiY=top-bTop;
+      inner.style.transformOrigin='50% '+(bTop-iTop).toFixed(1)+'px';
+      var ww=Math.min(W-2*Math.max(20,W*.02),Math.max(1200,Math.min(.82*W,1800))),g1=Math.max(6,Math.min(12,W*.006));
+      var bandH=band.offsetHeight,rowTop=top+bH*hiS+gap,avail=H-rowTop-bandH-gap-24;
+      var tw=Math.max(60,Math.min((ww-(k1-1)*g1)/k1,(avail-(n1-1)*g1)/n1*1.6)),th=tw/1.6,x1=(W-k1*tw-(k1-1)*g1)/2;
+      // where the tiles are held by the width, not the height, the end state is shorter than the window: centre it below the nav
+      var total=bH*hiS+gap+n1*th+(n1-1)*g1+gap+bandH,spare=H-nh-gap-total-24;
+      if(spare>0){top+=spare/2;hiY=top-bTop;rowTop=top+bH*hiS+gap;}
+      L0=[];L1=[];
+      for(var i=0;i<6;i++){
+        L0.push([(i%k0)*(c0+g0),((i/k0)|0)*(r0+g0),c0,r0]);
+        L1.push([x1+(i%k1)*(tw+g1),rowTop+((i/k1)|0)*(th+g1),tw,th]);
+      }
+      band.style.top=(rowTop+n1*th+(n1-1)*g1+gap)+'px';
+      small=tw<130;if(caps[0].offsetHeight)capH=caps[0].offsetHeight;
+      travel=Math.round(H);hero.style.setProperty('--uf-travel',travel+'px');
+      last=-1;frame();
+    }
+    function frame(){
+      raf=0;
+      var p=travel?Math.min(Math.max(-hero.getBoundingClientRect().top/travel,0),1):0;
+      if(p===last)return;last=p;
+      var e=sm(p,.05,.7),nh=nav.offsetHeight;
+      figs.forEach(function(f,i){
+        var a=L0[i],b=L1[i],x=a[0]+(b[0]-a[0])*e,y=a[1]+(b[1]-a[1])*e,w=a[2]+(b[2]-a[2])*e,h=a[3]+(b[3]-a[3])*e;
+        f.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';f.style.width=w.toFixed(1)+'px';f.style.height=h.toFixed(1)+'px';
+        // labels: the top row stays clear of the nav, the bottom row starts at the tiles' outer edge, away from the title; they
+        // fade out while the tiles cross behind the title and back in once the tiles settle, unless the tiles are too small.
+        // The two-column wall has no labels, as in the plain hero, so there they only arrive at the end.
+        var cy=narrow?10:i<3?10+Math.max(0,nh-y):(h-capH-18)*(1-e)+10*e,end=small?0:sm(e,.85,1);
+        caps[i].style.setProperty('--cap-y',cy.toFixed(1)+'px');
+        caps[i].style.setProperty('--cap-o',(narrow?end:1-sm(e,.04,.2)+end).toFixed(3));
+      });
+      st.style.setProperty('--e',e.toFixed(4));
+      st.style.setProperty('--shade-o',(1-sm(e,.75,1)).toFixed(3));
+      st.style.setProperty('--hi-y',(hiY*e).toFixed(1)+'px');
+      st.style.setProperty('--hi-s',(1+(hiS-1)*e).toFixed(4));
+      Array.prototype.forEach.call(stats,function(x,k){x.style.setProperty('--o',sm(p,.55+.1*k,.75+.1*k).toFixed(3));});
+    }
+    function soon(){if(!raf)raf=requestAnimationFrame(frame);}
+    window.addEventListener('scroll',soon,{passive:true});
+    window.addEventListener('resize',layout);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layout);
+    layout();
+  }
+
+  spy();
+  var autos=document.querySelectorAll('video[data-auto]');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      var t=e.target;
+      if(t===stage){inView=e.isIntersecting;if(REDUCED)return;if(e.isIntersecting)play(vs);else vs.pause();return;}
+      if(t===cfGrid){if(REDUCED)return;var m=cfVids[0];if(m){if(e.isIntersecting)play(m);else m.pause();}return;}
+      if(e.isIntersecting&&!REDUCED)play(t);else t.pause();
+    });},{threshold:.2});
+    io.observe(stage);io.observe(cfGrid);
+    Array.prototype.forEach.call(autos,function(v){io.observe(v);});
+  }else if(!REDUCED){Array.prototype.forEach.call(autos,play);}
+})();
+</script>
 </body>
 </html>
